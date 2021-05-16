@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Obligatorio</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+    <div class="MainForm">
+        <h1>Login</h1>
+        <br>
+        <label for="inputNameLog">Usuario</label>
+        <br>
+        <input id="inputNameLog" type="text">
+        <br>
+        <label for="passLog">Contrasena</label>
+        <br>
+        <input id="passLog" type="text">
+        <br>
+        <br>
+        <button type="submit">Ingresar</button>
+        <button type="submit">Registrarse</button>
+    </div>
+
+    <div class="MainForm">
+        <h1>Registro</h1>
+        <br>
+        <label for="inputNameReg">Nombre</label>
+        <br>
+        <input id="inputNameReg" type="text">
+        <br>
+        <label for="inputProfReg">Usuario</label>
+        <br>
+        <input id="inputProfReg" type="text">
+        <br>
+        <label for="inputPassReg">Congtrasena</label>
+        <br>
+        <input id="inputPassReg" type="password">
+        <br>
+        <select id="rol">
+            <option value="1">Estudiante</option>
+            <option value="2">Profesor</option>
+        </select>
+        <select id="listProf">
+            <option value="1">prof1</option>
+            <option value="2">prof2</option>
+        </select>
+        <br>
+        <br>
+        <button type="submit">Ingresar</button>
+    </div>
+    <br>
+   
+    <!-- Dashboard Profesores -->
+    
+    <div id="Dashboard" class="Dashboard">
+        <h1>Panel Profesor</h1>
+        <div class="loginUpperRight">
+            <label>Bienvenido + inputNameLog</label>
+        </div>
+        <br>
+        <div class="GestionContainer">
+            <div class="navcontainer">
+                <button id="AlumnosNav">Alumnos</button>
+                <button id="EstadisticasNav">Estadisticas</button>
+                <button id="DevolucionesNav">Devoluciones</button>
+                <button id="TareasNav">Crear Tareas</button>
+
+            </div>
+            <div class="Gestion">
+                <!-- <h1>Bienvenido NombreProf</h1> -->
+                <br>
+                <!-- Apartado Alumno -->
+
+                <div class="AlumnoList">
+                    <div class="AlumnoSelector">
+                        <select class="buttonAlumnoSelector" id="AlumnoDisplay">
+                            <option value="1">Alumno1</option>
+                            <option value="2">Alumno2</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="AlumnoInfo">
+                    <label>Alumno</label>
+                </div>
+
+
+                <!-- Apartado Estadisticas -->
+                <div>
+
+                </div>
+
+                <br>
+            </div>
+        </div>
+
+        <div id="DashboardProf" class="Dashboard">
+            <h1>Panel Profesor</h1>
+            <div class="loginUpperRight">
+                <label>Bienvenido + inputNameLog</label>
+            </div>
+            <br>
+            <div class="GestionContainer">
+               <!--  <div class="navcontainer">
+                    <button id="AlumnosNav">Alumnos</button>
+                    <button id="EstadisticasNav">Estadisticas</button>
+                    <button id="DevolucionesNav">Devoluciones</button>
+                    <button id="TareasNav">Crear Tareas</button>
+
+                </div> -->
+                <div class="Gestion">
+                    <!-- <h1>Bienvenido NombreProf</h1> -->
+                    <br>
+                    <!-- Apartado Alumno -->
+
+                    <div class="AlumnoList">
+                        <div class="AlumnoSelector">
+                            <select class="buttonAlumnoSelector" id="AlumnoDisplay">
+                                <option value="1">Alumno1</option>
+                                <option value="2">Alumno2</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="AlumnoInfo">
+                        <label>Alumno</label>
+                    </div>
+
+
+                    <!-- Apartado Estadisticas -->
+                    <div>
+
+                    </div>
+
+                    <br>
+                </div>
+            </div>
+
+            <script src="/main.js"></script>
+</body>
+
+</html>

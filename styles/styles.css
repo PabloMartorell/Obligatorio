@@ -1,0 +1,79 @@
+.MainForm{
+
+    border-style: solid;
+    margin: 5px;
+    padding: 5px 10px;
+    width: fit-content;
+    display: none;
+
+}
+
+body{
+    height: 100%;
+}
+
+.Gestion{
+    /* display: none; */
+    border-style: solid;
+    background-color: yellow;
+    margin: 5px 30px 0px 30px;
+    height: 350px;
+
+}
+
+.Dashboard{
+    background-color: chocolate;
+    border-style: solid;
+    margin: 75px 50px;
+    height: 500px;
+    
+
+}
+
+.AlumnoList{
+    display: inline-block;
+    margin: 10px 20px;
+    height: 300px;
+    width: 400px;
+    background-color: black;
+
+}
+
+.AlumnoInfo{
+    float: right;
+    margin: 10px 20px;
+    height: 300px;
+    width: 400px;
+    background-color: blue;
+
+}
+
+.navcontainer{
+    
+    border-style: solid;
+    width: fit-content;
+    height: fit-content;
+    margin-right: 430px;
+    margin-left: 430px;
+}
+
+.loginUpperRight{
+    float: right;
+}
+
+.AlumnoSelector{
+    margin-top: 90px;
+    margin-left: 120px;
+}
+
+.buttonAlumnoSelector{
+    text-align: center;
+    font-size: 30px;
+    margin: 4px 2px;
+
+}
+
+#DashboardProf{
+    margin: 0;
+}
+
