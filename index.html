@@ -7,114 +7,98 @@
 </head>
 
 <body>
-    <div class="MainForm">
+
+
+    <div id="login" style="display: block;" >
         <h1>Login</h1>
         <br>
-        <label for="inputNameLog">Usuario</label>
+        <label for="usuario">Usuario</label>
         <br>
-        <input id="inputNameLog" type="text">
+        <input id="usuario" type="text">
+        <br><br>
+        <label for="pass">Contraseña</label>
         <br>
-        <label for="passLog">Contrasena</label>
-        <br>
-        <input id="passLog" type="text">
+        <input id="pass" type="text">
         <br>
         <br>
-        <button type="submit">Ingresar</button>
-        <button type="submit">Registrarse</button>
+        <div id='loginError'></div>
+        <input id="btnIngresar" type="submit" value="Ingresar"></input>
+        <input id="btnRegistrar" type="submit" value="Registrarse"></input>
     </div>
 
-    <div class="MainForm">
+    <div id="registro" style="display: none;" >
         <h1>Registro</h1>
         <br>
-        <label for="inputNameReg">Nombre</label>
+        <label for="nombreRegistro">Nombre</label>
         <br>
-        <input id="inputNameReg" type="text">
+        <input id="nombreRegistro" type="text">
+        <br><br>
+        <label for="usuarioRegistro">Ususario</label>
         <br>
-        <label for="inputProfReg">Usuario</label>
+        <input id="usuarioRegistro" type="text">
+        <br><br>
+        <label for="passRegistro">Contraseña</label>
         <br>
-        <input id="inputProfReg" type="text">
-        <br>
-        <label for="inputPassReg">Congtrasena</label>
-        <br>
-        <input id="inputPassReg" type="password">
-        <br>
-        <select id="rol">
-            <option value="1">Estudiante</option>
-            <option value="2">Profesor</option>
-        </select>
-        <select id="listProf">
-            <option value="1">prof1</option>
-            <option value="2">prof2</option>
-        </select>
+        <input id="passRegistro" type="text">
         <br>
         <br>
-        <button type="submit">Ingresar</button>
+        <div id='registroError'></div>
+        <input id="btnRegistrarse" type="submit" value="Registrarse"></input>
+        <input id="btnCancelar" type="submit" value="Cancelar"></input>
     </div>
-    <br>
-   
-    <!-- Dashboard Profesores -->
+
+    <div id='main' style="display:none"><!-- Si se logea, mostrar esto por partes -->
     
-    <div id="Dashboard" class="Dashboard">
-        <h1>Panel Profesor</h1>
-        <div class="loginUpperRight">
-            <label>Bienvenido + inputNameLog</label>
+        <div class="MainForm">
+            <h1>Registro</h1>
+            <br>
+            <label for="inputNameReg">Nombre</label>
+            <br>
+            <input id="inputNameReg" type="text">
+            <br>
+            <label for="inputProfReg">Usuario</label>
+            <br>
+            <input id="inputProfReg" type="text">
+            <br>
+            <label for="inputPassReg">Congtrasena</label>
+            <br>
+            <input id="inputPassReg" type="password">
+            <br>
+            <select id="rol">
+                <option value="1">Estudiante</option>
+                <option value="2">Profesor</option>
+            </select>
+            <select id="listProf">
+                <option value="1">prof1</option>
+                <option value="2">prof2</option>
+            </select>
+            <br>
+            <br>
+            <button type="submit">Ingresar</button>
         </div>
         <br>
-        <div class="GestionContainer">
-            <div class="navcontainer">
-                <button id="AlumnosNav">Alumnos</button>
-                <button id="EstadisticasNav">Estadisticas</button>
-                <button id="DevolucionesNav">Devoluciones</button>
-                <button id="TareasNav">Crear Tareas</button>
-
-            </div>
-            <div class="Gestion">
-                <!-- <h1>Bienvenido NombreProf</h1> -->
-                <br>
-                <!-- Apartado Alumno -->
-
-                <div class="AlumnoList">
-                    <div class="AlumnoSelector">
-                        <select class="buttonAlumnoSelector" id="AlumnoDisplay">
-                            <option value="1">Alumno1</option>
-                            <option value="2">Alumno2</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="AlumnoInfo">
-                    <label>Alumno</label>
-                </div>
-
-
-                <!-- Apartado Estadisticas -->
-                <div>
-
-                </div>
-
-                <br>
-            </div>
-        </div>
-
-        <div id="DashboardProf" class="Dashboard">
+       
+        <!-- Dashboard Profesores -->
+        
+        <div id="Dashboard" class="Dashboard">
             <h1>Panel Profesor</h1>
             <div class="loginUpperRight">
                 <label>Bienvenido + inputNameLog</label>
             </div>
             <br>
             <div class="GestionContainer">
-               <!--  <div class="navcontainer">
+                <div class="navcontainer">
                     <button id="AlumnosNav">Alumnos</button>
                     <button id="EstadisticasNav">Estadisticas</button>
                     <button id="DevolucionesNav">Devoluciones</button>
                     <button id="TareasNav">Crear Tareas</button>
-
-                </div> -->
+    
+                </div>
                 <div class="Gestion">
                     <!-- <h1>Bienvenido NombreProf</h1> -->
                     <br>
                     <!-- Apartado Alumno -->
-
+    
                     <div class="AlumnoList">
                         <div class="AlumnoSelector">
                             <select class="buttonAlumnoSelector" id="AlumnoDisplay">
@@ -123,22 +107,67 @@
                             </select>
                         </div>
                     </div>
-
+    
                     <div class="AlumnoInfo">
                         <label>Alumno</label>
                     </div>
-
-
+    
+    
                     <!-- Apartado Estadisticas -->
                     <div>
-
+    
                     </div>
-
+    
                     <br>
                 </div>
             </div>
-
-            <script src="/main.js"></script>
+    
+            <div id="DashboardProf" class="Dashboard">
+                <h1>Panel Profesor</h1>
+                <div class="loginUpperRight">
+                    <label>Bienvenido + inputNameLog</label>
+                </div>
+                <br>
+                <div class="GestionContainer">
+                   <!--  <div class="navcontainer">
+                        <button id="AlumnosNav">Alumnos</button>
+                        <button id="EstadisticasNav">Estadisticas</button>
+                        <button id="DevolucionesNav">Devoluciones</button>
+                        <button id="TareasNav">Crear Tareas</button>
+    
+                    </div> -->
+                    <div class="Gestion">
+                        <!-- <h1>Bienvenido NombreProf</h1> -->
+                        <br>
+                        <!-- Apartado Alumno -->
+    
+                        <div class="AlumnoList">
+                            <div class="AlumnoSelector">
+                                <select class="buttonAlumnoSelector" id="AlumnoDisplay">
+                                    <option value="1">Alumno1</option>
+                                    <option value="2">Alumno2</option>
+                                </select>
+                            </div>
+                        </div>
+    
+                        <div class="AlumnoInfo">
+                            <label>Alumno</label>
+                        </div>
+    
+    
+                        <!-- Apartado Estadisticas -->
+                        <div>
+    
+                        </div>
+    
+                        <br>
+                    </div>
+                </div>
+    </div>
+    <script type="text/JavaScript" src="datos.js"></script>
+    <script type="text/JavaScript" src="fabricaDatos.js"></script>
+    <script type="text/JavaScript" src="login.js"></script>
+    <script type="text/JavaScript" src="main.js"></script>
 </body>
 
 </html>
