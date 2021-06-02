@@ -1,0 +1,108 @@
+h1 {
+    display: inline;
+    width: fit-content;
+    height: fit-content;
+}
+
+.MainForm {
+    border-style: solid;
+    margin: 5px;
+    padding: 5px 10px;
+    width: fit-content;
+    display: none;
+}
+
+body {
+    height: 100%;
+    background-color: magenta;
+}
+
+.Gestion {
+    border-style: solid;
+    background-color: yellow;
+    margin: 5px 30px 0px 30px;
+    height: 350px;
+    align-content: center;
+}
+
+.Dashboard {
+    background-color: chocolate;
+    position: relative;
+    margin: 50px 50px;
+    height: 500px;
+    align-content: center;
+    text-align: center;
+}
+
+.leftPanel {
+    float: left;
+    margin: 10px 50px;
+    height: 300px;
+    width: 400px;
+    background-color: black;
+}
+
+.rightPanel {
+    float: right;
+    margin: 10px 50px;
+    height: 300px;
+    width: 400px;
+    background-color: blue;
+}
+
+.navcontainer {
+    border-style: solid;
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.navcontainer>* {
+    font-size: 30px;
+}
+
+.loginUpperRight {
+    position: absolute;
+    top: 10px;
+    left: 1000px;
+    display: inline;
+    width: fit-content;
+    height: fit-content;
+}
+    
+
+.AlumnoSelector {
+    margin: 30px 50px 30px 50px;
+}
+
+.seleccionTarea{
+    margin: 50% auto 50% auto;
+}
+
+.buttonAlumnoSelector {
+    text-align: center;
+    font-size: 30px;
+    margin: 4px 2px;
+}
+
+#DashboardProfesor {
+    text-align: center;
+}
+
+
+#AlumnosNav {
+    size: 30px;
+}
+
+.TopContainer {
+    align-items: center;
+}
+
+.centrePanel{
+    background-color: brown;
+    float: left;
+    margin: 10px 50px;
+    height: 300px;
+    
+}
