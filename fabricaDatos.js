@@ -1,22 +1,88 @@
 precargarDatos();
 
 function precargarDatos() {
-    // TODO: antes de agregar a la lista, verificar que la pass y el userName cumplan con los requerimientos
-
-    usuarios = crearUsuarios();
+    precargarUsuarios();
 }
 
-function crearUsuarios() {
-    let usuarios1 = [];
-    let usuarioNuevo = usuario;
+function precargarUsuarios() {
+    crearDocentes();
+    crearAlumnos();
+    console.log("usuarios", usuarios); //BORRAR ESTO ANTES DE LA ENTREGA
+}
 
-    for (let i = 0; i < 10; i++) {
-        usuarioNuevo.nombreUsuario = "testUser " + i;
-        usuarioNuevo.nombre = "User " + i;
-        usuarioNuevo.email = `testUser${i}@hotmail.com`;
-        usuarioNuevo.pass = "1234"; //Cambiar esto para que cumpla los requerimientos
+function crearAlumnos() {
+    for (let i = 1; i <= 5; i++) {
+        const nombre = "alumno" + i;
+        const nombreUsuario = "alumnoUserName" + i;
+        const contraseña = "Alumno" + i;
+        const perfil = PERFIL_ALUMNO;
+        const docente = docentes[i - 1].nombreUsuario;
+        let nivel = NIVEL_INICIAL;
 
-        usuarios1.push({ ...usuarioNuevo });
+        if (i >= 2 && i <= 3) {
+            nivel = NIVEL_INTERMEDIO;
+        } else if (i > 3) {
+            nivel = NIVEL_AVANZADO;
+        }
+
+        const datosValidos = verificarDatosDeUsuario(nombreUsuario, contraseña);
+
+        if (datosValidos) {
+            crearAlumno(
+                nombre,
+                nombreUsuario,
+                contraseña,
+                perfil,
+                nivel,
+                docente
+            );
+        } else {
+            console.error("Datos de Alumno inválidos");
+        }
     }
-    return usuarios1;
+}
+
+function crearDocentes() {
+    for (let i = 1; i <= 5; i++) {
+        const nombre = "docente" + i;
+        const nombreUsuario = "docenteUserName" + i;
+        const contraseña = "Docente" + i;
+        const perfil = PERFIL_DOCENTE;
+
+        const datosValidos = verificarDatosDeUsuario(nombreUsuario, contraseña);
+
+        if (datosValidos) {
+            crearDocente(nombre, nombreUsuario, contraseña, perfil);
+        } else {
+            console.error("Datos de Docente inválidos");
+        }
+    }
+}
+
+function crearDocente(nombre, nombreUsuario, contraseña, perfil) {
+    const docente = new Docente(nombre, nombreUsuario, contraseña, perfil);
+
+    docentes.push(docente);
+    usuarios.push(docente);
+}
+
+function crearAlumno(
+    nombre,
+    nombreUsuario,
+    contraseña,
+    perfil,
+    nivel,
+    docente
+) {
+    const alumno = new Alumno(
+        nombre,
+        nombreUsuario,
+        contraseña,
+        perfil,
+        nivel,
+        docente
+    );
+
+    alumnos.push(alumno);
+    usuarios.push(alumno);
 }

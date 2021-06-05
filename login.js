@@ -1,37 +1,54 @@
 function login() {
-    console.log("usuarios", usuarios);
-    const usuario = document.querySelector("#usuario").value;
-    const pass = document.querySelector("#pass").value;
-
-    if (usuarioExiste(usuario, pass)) {
-        document.querySelector("#login").style.display = "none";
-        document.querySelector("#main").style.display = "block";
-
-        let;
+    const nombreUsuario = document.querySelector("#usuario").value;
+    const contraseña = document.querySelector("#pass").value;
+    const usuario = usuarioExiste(nombreUsuario, contraseña);
+    if (usuario != null) {
+        console.log("usuario", usuario);
+        ocultarTodasLasPantallas();
+        ingresarUsuarioPorPerfil(usuario.perfil);
     } else {
         mostrarLoginError();
     }
 }
 
-function usuarioExiste(usuario, pass) {
-    return buscarUsuario(usuario, pass);
+function usuarioExiste(usuario, contraseña) {
+    return buscarUsuario(usuario, contraseña);
 }
 
-function buscarUsuario(usuario, pass) {
-    let usuarioEncontrado = false;
+function buscarUsuario(nombreUsuario, contraseña) {
+    let usuario = null;
     let contador = 0;
 
-    while (usuarioEncontrado === false && contador < usuarios.length) {
-        const usuarioCoincide = usuarios[contador].nombreUsuario === usuario;
-        const passCoincide = usuarios[contador].pass === pass;
+    while (usuario === null && contador < usuarios.length) {
+        const usuarioCoincide =
+            usuarios[contador].nombreUsuario === nombreUsuario;
+        const contraseñaCoincide = usuarios[contador].contraseña === contraseña;
         contador++;
 
-        if (usuarioCoincide && passCoincide) {
-            usuarioEncontrado = true;
+        if (usuarioCoincide && contraseñaCoincide) {
+            usuario = usuarios[contador];
         }
     }
 
-    return usuarioEncontrado;
+    return usuario;
+}
+
+function ingresarUsuarioPorPerfil(perfil) {
+    if (perfil == PERFIL_ALUMNO) {
+        ingresarAlumno();
+    } else if (perfil == PERFIL_DOCENTE) {
+        ingresarDocente();
+    }
+}
+
+function ingresarAlumno() {
+    ocultarTodasLasPantallas();
+    mostrarPantallaPorId("pantallaAlumno");
+}
+
+function ingresarDocente() {
+    ocultarTodasLasPantallas();
+    mostrarPantallaPorId("pantallaDocente");
 }
 
 function mostrarLoginError() {
