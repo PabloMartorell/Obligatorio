@@ -11,6 +11,7 @@ function ocultarTodasLasPantallas() {
     document.querySelector("#pantallaAlumno").style.display = "none";
     document.querySelector("#registro").style.display = "none";
     document.querySelector("#pantallaDocente").style.display = "none";
+    document.querySelector("#banner").style.display = "none";
 }
 
 function verificarDatosDeUsuario(nombreUsuario, contraseña) {
@@ -65,4 +66,27 @@ function verificarContraseña(contraseña) {
         contieneMinuscula &&
         contieneCuatroCaracteres
     );
+}
+
+function mostrarImagenPerfilAlumno() {
+    let imagenPerfil =
+        '<img class="imgPerfil" src="img/estudiante.png" alt="Imagen Perfil" width="200">';
+    document.querySelector("#imagenPefril").innerHTML = imagenPerfil;
+    mostrarPantallaPorId("banner");
+}
+
+function mostrarImagenPerfilDocente() {
+    let imagenPerfil =
+        '<img class="imgPerfil" src="img/teacher.png" alt="Imagen Perfil" width="200">';
+    document.querySelector("#imagenPefril").innerHTML = imagenPerfil;
+}
+
+function volverAlInicio() {
+    ocultarTodasLasPantallas();
+    mostrarPantallaPorId("login");
+}
+
+function mostrarMensajeBienvendia(usuario) {
+    let mensaje = `Bienvenido ${usuario.nombre}!`;
+    document.querySelector("#mensajeBienvenida").innerHTML = mensaje;
 }

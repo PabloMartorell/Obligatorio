@@ -55,104 +55,95 @@
             <input id="btnRegistrarse" type="submit" value="Registrarse"></input>
             <input id="btnCancelarRegistro" type="submit" value="Cancelar"></input>
         </div>
-        <div id="pantallaAlumno" style="display:none"></div>
-        <div id="pantallaDocente" style="display:none">
-            <!-- Dashboard Profesores -->
-
-            <div id="Dashboard" class="Dashboard">
-                <h1>Panel Profesor</h1>
-                <div class="loginUpperRight">
-                    <label>Bienvenido + inputNameLog</label>
-                </div>
-                <br>
-                <div class="GestionContainer">
-                    <div class="navcontainer">
-                        <button id="AlumnosNav">Alumnos</button>
-                        <button id="EstadisticasNav">Estadisticas</button>
-                        <button id="DevolucionesNav">Devoluciones</button>
-                        <button id="TareasNav">Crear Tareas</button>
-
-                    </div>
-                    <div class="Gestion">
-                        <!-- <h1>Bienvenido NombreProf</h1> -->
-                        <br>
-                        <!-- Apartado Alumno -->
-
-                        <div class="AlumnoList">
-                            <div class="AlumnoSelector">
-                                <select class="buttonAlumnoSelector" id="AlumnoDisplay">
-                                    <option value="1">Alumno1</option>
-                                    <option value="2">Alumno2</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="AlumnoInfo">
-                            <label>Alumno</label>
-                        </div>
-                        <!-- Apartado Estadisticas -->
-                        <div>
-
-                        </div>
-
-                        <br>
+        <div id="banner" style="display:none;">
+            <!--Aca va el background y todo para la navBar-->
+            <div id='perfilInfo' class="navBar">
+                <div id="opcionesDocente"></div>
+                <div id="opcionesAlumno"></div>
+                <div id='imagenPefril'></div>
+                <div class="desplegable">
+                    <div class="btnOpciones">Perfil</div>
+                    <!--Cambiar este valor por el nombre de usuario?-->
+                    <div class="opciones-desplegables">
+                        <input id="logOut" type='submit' value="Log Out" class="opcion-desplegable"></input>
                     </div>
                 </div>
-                <div id="DashboardProf" class="Dashboard">
-                    <h1>Panel Profesor</h1>
-                    <div class="loginUpperRight">
-                        <label>Bienvenido + inputNameLog</label>
-                    </div>
-                    <br>
-                    <div class="GestionContainer">
-                        <!--  <div class="navcontainer">
-                        <button id="AlumnosNav">Alumnos</button>
-                        <button id="EstadisticasNav">Estadisticas</button>
-                        <button id="DevolucionesNav">Devoluciones</button>
-                        <button id="TareasNav">Crear Tareas</button>
-    
-                    </div> -->
-                        <div class="Gestion">
-                            <!-- <h1>Bienvenido NombreProf</h1> -->
-                            <br>
-                            <!-- Apartado Alumno -->
 
-                            <div class="AlumnoList">
-                                <div class="AlumnoSelector">
-                                    <select class="buttonAlumnoSelector" id="AlumnoDisplay">
-                                        <option value="1">Alumno1</option>
-                                        <option value="2">Alumno2</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="AlumnoInfo">
-                                <label>Alumno</label>
-                            </div>
-
-
-                            <!-- Apartado Estadisticas -->
-                            <div>
-
-                            </div>
-
-                            <br>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
+        <div id="opcionesDesplegable" style="display: none;" class="dropdown-content">
+            <input id="logOut" type='submit' value="Log Out"></input>
+        </div>
+
+        <div id="mensajeBienvenida"></div>
+
+        <div id="pantallaAlumno" style="display:none">
+                            <!-- !!!!!!!!!  ACA VA TODO LO DEL ALUMNO !!!!!!!!!! -->
+        </div>
+
+        <div id="pantallaDocente" style="display:none">
+             <!-- !!!!!!!!!  ACA VA TODO LO DEL DOCENTE !!!!!!!!!! -->
+            <div class="rightPanel">
+                <label>Alumno</label>
+            </div>
+
+
+            <!-- Apartado Estadisticas -->
+            <div id="tablaCantidadEntregas" class="leftPannel">
+
+            </div>
+
+            <div id="estadisticasAlumno" class="rightPannel">
+
+            </div>
+
+            <!-- Apartado Devoluciones -->
+
+            <div id="tableTareaDevolucion" class="leftPanel">
+
+            </div>
+
+            <div id="infoTareaDevolucion" class="righPanel">
+
+            </div>
+            <!-- Apartado Crear Tareas -->
+
+            <div class="centrePanel">
+
+                <h1>Crear Tarea</h1>
+                <br>
+
+                <label for="tareaDesc">DESCRIPCION</label>
+                <br>
+                <textarea id="tareaDesc"></textarea>
+                <br>
+                <select id="tareaLevel">
+                    <option value="inicial">INICIAL</option>
+                    <option value="interermedio">INTERMEDIO</option>
+                    <option value="avanzado">AVANZADO</option>
+                </select>
+                <br>
+                <label for="tareaImagen">ADJUNTE FOTO</label>
+                <br>
+                <input type="file" id="tareaImagen">
+                <br>
+                <button type="submit" id="createTarea">CREAR</button>
+
+            </div>
+            <br>
+        </div>
     </div>
+
     <script type="text/JavaScript" src="alumno.js"></script>
     <script type="text/JavaScript" src="docente.js"></script>
     <script type="text/JavaScript" src="entrega.js"></script>
     <script type="text/JavaScript" src="tarea.js"></script>
     <script type="text/JavaScript" src="datos.js"></script>
+    <script type="text/Javascript" src="gestionTareas.js"></script>
     <script type="text/JavaScript" src="utilidades.js"></script>
     <script type="text/JavaScript" src="fabricaDatos.js"></script>
     <script type="text/JavaScript" src="registro.js"></script>
     <script type="text/JavaScript" src="login.js"></script>
     <script type="text/JavaScript" src="main.js"></script>
 </body>
-
 </html>

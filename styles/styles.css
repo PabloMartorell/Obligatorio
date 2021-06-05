@@ -1,79 +1,57 @@
-.MainForm{
-
-    border-style: solid;
-    margin: 5px;
-    padding: 5px 10px;
-    width: fit-content;
-    display: none;
-
+.navBar {
+    background-color: rgb(167, 202, 235);
 }
 
-body{
-    height: 100%;
+.btnOpciones {
+    background-color: rgb(38, 139, 255);
+    color: white;
+    padding: 1vh;
+    font-size: 16px;
+    border: none;
 }
 
-.Gestion{
-    /* display: none; */
-    border-style: solid;
-    background-color: yellow;
-    margin: 5px 30px 0px 30px;
-    height: 350px;
-
-}
-
-.Dashboard{
-    background-color: chocolate;
-    border-style: solid;
-    margin: 75px 50px;
-    height: 500px;
-    
-
-}
-
-.AlumnoList{
+.desplegable {
+    position: relative;
     display: inline-block;
-    margin: 10px 20px;
-    height: 300px;
-    width: 400px;
-    background-color: black;
-
 }
 
-.AlumnoInfo{
-    float: right;
-    margin: 10px 20px;
-    height: 300px;
-    width: 400px;
-    background-color: blue;
-
+.opciones-desplegables {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 11vh;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
-.navcontainer{
-    
-    border-style: solid;
-    width: fit-content;
-    height: fit-content;
-    margin-right: 430px;
-    margin-left: 430px;
+.opciones-desplegables input {
+    color: black;
+    /* padding: 12px 16px; */
+    padding: 1vh;
+    text-decoration: none;
+    display: block;
 }
 
-.loginUpperRight{
-    float: right;
+.opciones-desplegables input:hover {
+    background-color: rgb(66, 142, 255);
 }
 
-.AlumnoSelector{
-    margin-top: 90px;
-    margin-left: 120px;
+.desplegable:hover .opciones-desplegables {
+    display: block;
 }
 
-.buttonAlumnoSelector{
-    text-align: center;
-    font-size: 30px;
-    margin: 4px 2px;
-
+.desplegable:hover .btnOpciones {
+    background-color: rgb(25, 100, 212);
 }
 
-#DashboardProf{
-    margin: 0;
+.opcion-desplegable {
+    background-color: rgb(167, 202, 235);
+    border: none;
+    /* border-radius: 8px; */
 }
 
+.imgPerfil {
+    width: 40px;
+    border: solid;
+    border-radius: 100px;
+}

@@ -17,4 +17,21 @@ function inicializar() {
     document
         .querySelector("#tipoUsuarioRegistro")
         .addEventListener("change", mostrarInfoExtraPorTipoDeUsuario);
+
+    document.querySelector("#logOut").addEventListener("click", logOut);
+}
+
+function mostrarPerfilDesplegable() {
+    let desplegable = document.querySelector("#opcionesDesplegable").style
+        .display;
+
+    if (desplegable == "none") {
+        document.querySelector("#opcionesDesplegable").style.display = "block";
+    } else {
+        document.querySelector("#opcionesDesplegable").style.display = "none";
+    }
+}
+
+function logOut() {
+    volverAlInicio();
 }
