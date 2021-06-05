@@ -7,140 +7,77 @@
 </head>
 
 <body>
+    <div>
+        <div id="login" style="display: block;">
+            <h1>Login</h1>
+            <br>
+            <label for="usuario">Usuario</label>
+            <br>
+            <input id="usuario" type="text">
+            <br><br>
+            <label for="pass">Contraseña</label>
+            <br>
+            <input id="pass" type="text">
+            <br>
+            <br>
+            <div id='loginError'></div>
+            <input id="btnIngresar" type="submit" value="Ingresar"></input>
+            <input id="btnRegistrar" type="submit" value="Registrarse"></input>
+        </div>
 
-
-    <div id="login" style="display: block;" >
-        <h1>Login</h1>
-        <br>
-        <label for="usuario">Usuario</label>
-        <br>
-        <input id="usuario" type="text">
-        <br><br>
-        <label for="pass">Contraseña</label>
-        <br>
-        <input id="pass" type="text">
-        <br>
-        <br>
-        <div id='loginError'></div>
-        <input id="btnIngresar" type="submit" value="Ingresar"></input>
-        <input id="btnRegistrar" type="submit" value="Registrarse"></input>
-    </div>
-
-    <div id="registro" style="display: none;" >
-        <h1>Registro</h1>
-        <br>
-        <label for="nombreRegistro">Nombre</label>
-        <br>
-        <input id="nombreRegistro" type="text">
-        <br><br>
-        <label for="usuarioRegistro">Ususario</label>
-        <br>
-        <input id="usuarioRegistro" type="text">
-        <br><br>
-        <label for="passRegistro">Contraseña</label>
-        <br>
-        <input id="passRegistro" type="text">
-        <br>
-        <br>
-        <div id='registroError'></div>
-        <input id="btnRegistrarse" type="submit" value="Registrarse"></input>
-        <input id="btnCancelar" type="submit" value="Cancelar"></input>
-    </div>
-
-    <div id='main' style="display:none"><!-- Si se logea, mostrar esto por partes -->
-    
-        <div class="MainForm">
+        <div id="registro" style="display: none;">
             <h1>Registro</h1>
             <br>
-            <label for="inputNameReg">Nombre</label>
+            <label for="nombreRegistro">Nombre</label>
             <br>
-            <input id="inputNameReg" type="text">
+            <input id="nombreRegistro" type="text">
+            <br><br>
+            <label for="usuarioRegistro">Ususario</label>
             <br>
-            <label for="inputProfReg">Usuario</label>
+            <input id="usuarioRegistro" type="text">
+            <br><br>
+            <label for="contraseñaRegistro">Contraseña</label>
             <br>
-            <input id="inputProfReg" type="text">
+            <input id="contraseñaRegistro" type="text">
             <br>
-            <label for="inputPassReg">Congtrasena</label>
             <br>
-            <input id="inputPassReg" type="password">
-            <br>
-            <select id="rol">
-                <option value="1">Estudiante</option>
-                <option value="2">Profesor</option>
-            </select>
-            <select id="listProf">
-                <option value="1">prof1</option>
-                <option value="2">prof2</option>
+            <label for="tipoUsuarioRegistro">Tipo de usuario:</label>
+            <select id="tipoUsuarioRegistro">
+                <option value="docente">Docente</option>
+                <option value="alumno">Alumno</option>
             </select>
             <br>
             <br>
-            <button type="submit">Ingresar</button>
+            <div id='infoRegistroExtra'></div>
+            <br>
+            <br>
+            <div id='registroError'></div>
+            <input id="btnRegistrarse" type="submit" value="Registrarse"></input>
+            <input id="btnCancelarRegistro" type="submit" value="Cancelar"></input>
         </div>
-        <br>
-       
-        <!-- Dashboard Profesores -->
-        
-        <div id="Dashboard" class="Dashboard">
-            <h1>Panel Profesor</h1>
-            <div class="loginUpperRight">
-                <label>Bienvenido + inputNameLog</label>
-            </div>
-            <br>
-            <div class="GestionContainer">
-                <div class="navcontainer">
-                    <button id="AlumnosNav">Alumnos</button>
-                    <button id="EstadisticasNav">Estadisticas</button>
-                    <button id="DevolucionesNav">Devoluciones</button>
-                    <button id="TareasNav">Crear Tareas</button>
-    
-                </div>
-                <div class="Gestion">
-                    <!-- <h1>Bienvenido NombreProf</h1> -->
-                    <br>
-                    <!-- Apartado Alumno -->
-    
-                    <div class="AlumnoList">
-                        <div class="AlumnoSelector">
-                            <select class="buttonAlumnoSelector" id="AlumnoDisplay">
-                                <option value="1">Alumno1</option>
-                                <option value="2">Alumno2</option>
-                            </select>
-                        </div>
-                    </div>
-    
-                    <div class="AlumnoInfo">
-                        <label>Alumno</label>
-                    </div>
-    
-    
-                    <!-- Apartado Estadisticas -->
-                    <div>
-    
-                    </div>
-    
-                    <br>
-                </div>
-            </div>
-    
-            <div id="DashboardProf" class="Dashboard">
+        <div id="pantallaAlumno" style="display:none"></div>
+        <div id="pantallaDocente" style="display:none">
+            <!-- Dashboard Profesores -->
+
+            <div id="Dashboard" class="Dashboard">
                 <h1>Panel Profesor</h1>
                 <div class="loginUpperRight">
                     <label>Bienvenido + inputNameLog</label>
                 </div>
                 <br>
                 <div class="GestionContainer">
-                   <!--  <div class="navcontainer">
+                    <div class="navcontainer">
                         <button id="AlumnosNav">Alumnos</button>
                         <button id="EstadisticasNav">Estadisticas</button>
                         <button id="DevolucionesNav">Devoluciones</button>
                         <button id="TareasNav">Crear Tareas</button>
-    
-                    </div> -->
+
+                    </div>
                     <div class="Gestion">
                         <!-- <h1>Bienvenido NombreProf</h1> -->
                         <br>
                         <!-- Apartado Alumno -->
-    
+
                         <div class="AlumnoList">
                             <div class="AlumnoSelector">
                                 <select class="buttonAlumnoSelector" id="AlumnoDisplay">
@@ -149,23 +86,71 @@
                                 </select>
                             </div>
                         </div>
-    
+
                         <div class="AlumnoInfo">
                             <label>Alumno</label>
                         </div>
-    
-    
                         <!-- Apartado Estadisticas -->
                         <div>
-    
+
                         </div>
-    
+
                         <br>
                     </div>
                 </div>
+                <div id="DashboardProf" class="Dashboard">
+                    <h1>Panel Profesor</h1>
+                    <div class="loginUpperRight">
+                        <label>Bienvenido + inputNameLog</label>
+                    </div>
+                    <br>
+                    <div class="GestionContainer">
+                        <!--  <div class="navcontainer">
+                        <button id="AlumnosNav">Alumnos</button>
+                        <button id="EstadisticasNav">Estadisticas</button>
+                        <button id="DevolucionesNav">Devoluciones</button>
+                        <button id="TareasNav">Crear Tareas</button>
+    
+                    </div> -->
+                        <div class="Gestion">
+                            <!-- <h1>Bienvenido NombreProf</h1> -->
+                            <br>
+                            <!-- Apartado Alumno -->
+
+                            <div class="AlumnoList">
+                                <div class="AlumnoSelector">
+                                    <select class="buttonAlumnoSelector" id="AlumnoDisplay">
+                                        <option value="1">Alumno1</option>
+                                        <option value="2">Alumno2</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="AlumnoInfo">
+                                <label>Alumno</label>
+                            </div>
+
+
+                            <!-- Apartado Estadisticas -->
+                            <div>
+
+                            </div>
+
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <script type="text/JavaScript" src="alumno.js"></script>
+    <script type="text/JavaScript" src="docente.js"></script>
+    <script type="text/JavaScript" src="entrega.js"></script>
+    <script type="text/JavaScript" src="tarea.js"></script>
     <script type="text/JavaScript" src="datos.js"></script>
+    <script type="text/JavaScript" src="utilidades.js"></script>
     <script type="text/JavaScript" src="fabricaDatos.js"></script>
+    <script type="text/JavaScript" src="registro.js"></script>
     <script type="text/JavaScript" src="login.js"></script>
     <script type="text/JavaScript" src="main.js"></script>
 </body>
