@@ -32,9 +32,12 @@ function buscarUsuario(usuario, pass) {
     }
 
     return usuarioEncontrado;
+
 }
 
 function mostrarLoginError() {
+
     let mensajeError = "El nombre de usuario y/o contraseña no son correctos";
     document.querySelector("#loginError").innerHTML = mensajeError;
+    
 }
