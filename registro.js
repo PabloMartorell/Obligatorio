@@ -4,8 +4,7 @@ function mostrarPantallaRegistro() {
 }
 
 function cancelarRegistro() {
-    ocultarTodasLasPantallas();
-    mostrarPantallaPorId("login");
+    volverAlInicio();
 }
 
 function mostrarInfoExtraPorTipoDeUsuario() {

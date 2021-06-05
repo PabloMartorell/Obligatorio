@@ -3,9 +3,7 @@ function login() {
     const contraseña = document.querySelector("#pass").value;
     const usuario = usuarioExiste(nombreUsuario, contraseña);
     if (usuario != null) {
-        console.log("usuario", usuario);
-        ocultarTodasLasPantallas();
-        ingresarUsuarioPorPerfil(usuario.perfil);
+        ingresarUsuario(usuario);
     } else {
         mostrarLoginError();
     }
@@ -33,11 +31,20 @@ function buscarUsuario(nombreUsuario, contraseña) {
     return usuario;
 }
 
+function ingresarUsuario(usuario) {
+    ocultarTodasLasPantallas();
+    ingresarUsuarioPorPerfil(usuario.perfil);
+    mostrarPantallaPorId("banner");
+    mostrarMensajeBienvendia(usuario);
+}
+
 function ingresarUsuarioPorPerfil(perfil) {
     if (perfil == PERFIL_ALUMNO) {
         ingresarAlumno();
+        mostrarImagenPerfilAlumno();
     } else if (perfil == PERFIL_DOCENTE) {
         ingresarDocente();
+        mostrarImagenPerfilDocente();
     }
 }
 
