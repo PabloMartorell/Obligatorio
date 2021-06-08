@@ -55,3 +55,34 @@
     border: solid;
     border-radius: 100px;
 }
+
+.leftPannel {
+    
+    border-color: #0845a1;
+    float: left;
+    margin: 10px 50px;
+    height: 300px;
+    width: 400px;
+    border-style: solid;
+    
+}
+
+.rightPannel {
+    border-style: solid;
+    float: right;
+    margin: 10px 50px;
+    height: 300px;
+    width: 400px;
+    border-color: #0845a1;
+}
+
+.centrePannel{
+    align-items: center;
+   
+    border-style: solid;
+    border-color: #0845a1;
+    float: left;
+    
+    height: 300px;
+    
+}
