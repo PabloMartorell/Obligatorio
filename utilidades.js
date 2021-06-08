@@ -12,6 +12,7 @@ function ocultarTodasLasPantallas() {
     document.querySelector("#registro").style.display = "none";
     document.querySelector("#pantallaDocente").style.display = "none";
     document.querySelector("#banner").style.display = "none";
+    document.querySelector("#mensajeBienvenida").style.display = "none";
 }
 
 function verificarDatosDeUsuario(nombreUsuario, contraseña) {
@@ -89,4 +90,16 @@ function volverAlInicio() {
 function mostrarMensajeBienvendia(usuario) {
     let mensaje = `Bienvenido ${usuario.nombre}!`;
     document.querySelector("#mensajeBienvenida").innerHTML = mensaje;
+}
+
+function generarId(valores) {
+    let id = "";
+
+    for (let i = 0; i < valores.length; i++) {
+        if (valores[i] != null && valores[i] != " ") {
+            id += i + valores[i];
+        }
+    }
+
+    return id;
 }

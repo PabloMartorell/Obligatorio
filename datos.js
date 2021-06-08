@@ -5,6 +5,11 @@ const NIVEL_INICIAL = "inicial";
 const NIVEL_INTERMEDIO = "intermedio";
 const NIVEL_AVANZADO = "avanzado";
 
+let usuarioActual = {};
+
 let docentes = [];
 let alumnos = [];
 let usuarios = [];
+let tareas = [];
+let tareasACorregir = [];
+let tareasCorregidas = [];

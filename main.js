@@ -19,8 +19,19 @@ function inicializar() {
         .addEventListener("change", mostrarInfoExtraPorTipoDeUsuario);
 
     document.querySelector("#logOut").addEventListener("click", logOut);
-}
 
+    document
+        .querySelector("#opcionTareasEstudiante")
+        .addEventListener("click", mostrarTareasARealizar);
+
+    document
+        .querySelector("#btnBuscarTarea")
+        .addEventListener("click", buscarTarea);
+
+    document
+        .querySelector("#filaTareaEstudiantes")
+        .addEventListener("click", mostrarDetallesTarea);
+}
 function mostrarPerfilDesplegable() {
     let desplegable = document.querySelector("#opcionesDesplegable").style
         .display;

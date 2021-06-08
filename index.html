@@ -8,67 +8,73 @@
 
 <body>
     <div>
-        <div id="login" style="display: block;">
-            <h1>Login</h1>
-            <br>
-            <label for="usuario">Usuario</label>
-            <br>
-            <input id="usuario" type="text">
-            <br><br>
-            <label for="pass">Contraseña</label>
-            <br>
-            <input id="pass" type="text">
-            <br>
-            <br>
-            <div id='loginError'></div>
-            <input id="btnIngresar" type="submit" value="Ingresar"></input>
-            <input id="btnRegistrar" type="submit" value="Registrarse"></input>
-        </div>
-
-        <div id="registro" style="display: none;">
-            <h1>Registro</h1>
-            <br>
-            <label for="nombreRegistro">Nombre</label>
-            <br>
-            <input id="nombreRegistro" type="text">
-            <br><br>
-            <label for="usuarioRegistro">Ususario</label>
-            <br>
-            <input id="usuarioRegistro" type="text">
-            <br><br>
-            <label for="contraseñaRegistro">Contraseña</label>
-            <br>
-            <input id="contraseñaRegistro" type="text">
-            <br>
-            <br>
-            <label for="tipoUsuarioRegistro">Tipo de usuario:</label>
-            <select id="tipoUsuarioRegistro">
-                <option value="docente">Docente</option>
-                <option value="alumno">Alumno</option>
-            </select>
-            <br>
-            <br>
-            <div id='infoRegistroExtra'></div>
-            <br>
-            <br>
-            <div id='registroError'></div>
-            <input id="btnRegistrarse" type="submit" value="Registrarse"></input>
-            <input id="btnCancelarRegistro" type="submit" value="Cancelar"></input>
-        </div>
-        <div id="banner" style="display:none;">
-            <!--Aca va el background y todo para la navBar-->
-            <div id='perfilInfo' class="navBar">
-                <div id="opcionesDocente"></div>
-                <div id="opcionesAlumno"></div>
-                <div id='imagenPefril'></div>
-                <div class="desplegable">
-                    <div class="btnOpciones">Perfil</div>
-                    <!--Cambiar este valor por el nombre de usuario?-->
-                    <div class="opciones-desplegables">
-                        <input id="logOut" type='submit' value="Log Out" class="opcion-desplegable"></input>
-                    </div>
+        <div>
+            <div>
+                <div id="login" style="display: block;">
+                    <h1>Login</h1>
+                    <br>
+                    <label for="usuario">Usuario</label>
+                    <br>
+                    <input id="usuario" type="text">
+                    <br><br>
+                    <label for="pass">Contraseña</label>
+                    <br>
+                    <input id="pass" type="text">
+                    <br>
+                    <br>
+                    <div id='loginError'></div>
+                    <input id="btnIngresar" type="submit" value="Ingresar"></input>
+                    <input id="btnRegistrar" type="submit" value="Registrarse"></input>
                 </div>
 
+                <div id="registro" style="display: none;">
+                    <h1>Registro</h1>
+                    <br>
+                    <label for="nombreRegistro">Nombre</label>
+                    <br>
+                    <input id="nombreRegistro" type="text">
+                    <br><br>
+                    <label for="usuarioRegistro">Ususario</label>
+                    <br>
+                    <input id="usuarioRegistro" type="text">
+                    <br><br>
+                    <label for="contraseñaRegistro">Contraseña</label>
+                    <br>
+                    <input id="contraseñaRegistro" type="text">
+                    <br>
+                    <br>
+                    <label for="tipoUsuarioRegistro">Tipo de usuario:</label>
+                    <select id="tipoUsuarioRegistro">
+                        <option value="docente">Docente</option>
+                        <option value="alumno">Alumno</option>
+                    </select>
+                    <br>
+                    <br>
+                    <div id='infoRegistroExtra'></div>
+                    <br>
+                    <br>
+                    <div id='registroError'></div>
+                    <input id="btnRegistrarse" type="submit" value="Registrarse"></input>
+                    <input id="btnCancelarRegistro" type="submit" value="Cancelar"></input>
+                </div>
+                <div id="banner" style="display:none;">
+                    <!--Aca va el background y todo para la navBar-->
+                    <div id='perfilInfo' class="navBar">
+                        <div id="opcionesDocente"></div>
+                        <div id="opcionesAlumno">
+                            <input id="opcionTareasEstudiante" type='submit' value="Tareas"></input>
+                            <input id="opcionEntregasEstudiante" type='submit' value="Entregas"></input>
+                        </div>
+                        <div class="desplegable">
+                            <div id='imagenPefril'></div>
+                            <div class="btnOpciones">Perfil</div>
+                            <!--Cambiar este valor por el nombre de usuario?-->
+                            <div class="opciones-desplegables">
+                                <input id="logOut" type='submit' value="Log Out" class="opcion-desplegable"></input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="opcionesDesplegable" style="display: none;" class="dropdown-content">
@@ -79,7 +85,26 @@
 
         <div id="pantallaAlumno" style="display:none">
             <!-- !!!!!!!!!  ACA VA TODO LO DEL ALUMNO !!!!!!!!!! -->
+            <div id='opcionTareasEstudiante'>
+                <div>Tareas a realizar</div>
+                <div id='contenedorTareas'>
+                    <div id='buscadorTareas'>
+                        <input id='tareaABuscar' type='text'></input>
+                        <input id='btnBuscarTarea' type='submit' value='Buscar'></input>
+                    </div>
+                    <div id='tablaTareasEstudiante'></div><!-- ACA VA LA TABLA DE LAS TAREAS -->
+                </div>
+            </div>
+            <div id='detallesTareaSeleccionada'>
+                <div id='tituloTareaSeleccionada'></div>
+                <div id='descripcionTareaSeleccionada'></div>
+                <input id="btnAtrasDetallesTarea" type='submit' value="Atras"></input>
+                <input id="btnRealizarEntregaTarea" type='submit' value="Realizar Entrega"></input>
+            </div>
         </div>
+
+
+
 
         <div id="pantallaDocente" style="display:none">
             <!-- !!!!!!!!!  ACA VA TODO LO DEL DOCENTE !!!!!!!!!! -->
@@ -93,7 +118,6 @@
 
                 </div>
             </div>
-
 
             <!-- Apartado Estadisticas -->
             <div id="tablaCantidadEntregas" class="leftPannel">
@@ -111,6 +135,11 @@
             </div>
 
             <div id="infoTareaDevolucion" class="righPanel">
+
+            </div>
+            <!-- Apartado Crear Tareas -->
+
+            <div class="centrePanel">
 
             </div>
             <!-- Apartado Crear Tareas -->
@@ -140,18 +169,34 @@
                 <br>
                 <button type="submit" id="createTarea">CREAR</button>
 
+                <label for="tareaDesc">DESCRIPCION</label>
+                <br>
+                <textarea id="tareaDesc"></textarea>
+                <br>
+                <select id="tareaLevel">
+                    <option value="inicial">INICIAL</option>
+                    <option value="interermedio">INTERMEDIO</option>
+                    <option value="avanzado">AVANZADO</option>
+                </select>
+                <br>
+                <label for="tareaImagen">ADJUNTE FOTO</label>
+                <br>
+                <input type="file" id="tareaImagen">
+                <br>
+                <button type="submit" id="createTarea">CREAR</button>
+
             </div>
             <br>
         </div>
     </div>
 
-    <script type="text/JavaScript" src="gestionAlumnos.js"></script>
     <script type="text/JavaScript" src="alumno.js"></script>
     <script type="text/JavaScript" src="docente.js"></script>
     <script type="text/JavaScript" src="entrega.js"></script>
     <script type="text/JavaScript" src="tarea.js"></script>
     <script type="text/JavaScript" src="datos.js"></script>
     <script type="text/Javascript" src="gestionTareas.js"></script>
+    <script type="text/JavaScript" src="gestionAlumnos.js"></script>
     <script type="text/JavaScript" src="utilidades.js"></script>
     <script type="text/JavaScript" src="fabricaDatos.js"></script>
     <script type="text/JavaScript" src="registro.js"></script>

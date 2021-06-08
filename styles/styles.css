@@ -1,5 +1,10 @@
 .navBar {
     background-color: rgb(167, 202, 235);
+    display: grid; /*A parir de aca agregue los grids */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas: "empty tareasEstudiante entregas infoPerfil";
 }
 
 .btnOpciones {
@@ -56,15 +61,25 @@
     border-radius: 100px;
 }
 
+.opcion-tarea-estudiante {
+    grid-area: entregas;
+    margin: 4vh;
+    padding: 2vh;
+}
+
+.opcion-entrega-estudiante {
+    grid-area: tareasEstudiante;
+    margin: 4vh;
+    padding: 2vh;
+}
+
 .leftPannel {
-    
     border-color: #0845a1;
     float: left;
     margin: 10px 50px;
     height: 300px;
     width: 400px;
     border-style: solid;
-    
 }
 
 .rightPannel {
@@ -76,13 +91,12 @@
     border-color: #0845a1;
 }
 
-.centrePannel{
+.centrePannel {
     align-items: center;
-   
+
     border-style: solid;
     border-color: #0845a1;
     float: left;
-    
+
     height: 300px;
-    
 }

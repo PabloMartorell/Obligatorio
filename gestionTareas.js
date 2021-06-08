@@ -1,20 +1,12 @@
-let tareasCreadas = [];
-let tareasAlumno = [];
-let tareasCorregidas = [];
-let showTareas = [];
-
+function mostrarTareasAlumno() {}
 
 /* Tabla de tareas asignadas al alummno por nivel */
 
 function mostrarTareasAlumno() {
-
-    for (i=0; i < tareasCreadas; i++){
-
-        if (alumnoActual.nivel = tareasCreadas[i].nivel){
-
+    for (i = 0; i < tareasCreadas; i++) {
+        if ((alumnoActual.nivel = tareasCreadas[i].nivel)) {
             showTareas.push(tareasCreadas);
         }
-
     }
 
     let misTareasAlumno = `
@@ -31,8 +23,6 @@ function mostrarTareasAlumno() {
             
         </tr>
     </table>`;
-
-
 }
 
 /* Tabla tareas entregadas en apartado devoluciones/docente */
@@ -73,8 +63,8 @@ function mostrarTareaInfo() {
         <br>
         <button id="enviarDevolucion">ENVIAR<button>
     `;
-    document.querySelector("#infoTareaDevolucion").innerHTML =infoTareaDevolucion;
-    
+    document.querySelector("#infoTareaDevolucion").innerHTML =
+        infoTareaDevolucion;
 }
 
 /* Agregar tareas al combobox */
@@ -91,12 +81,11 @@ function mostrarTareaInfo() {
 
 /* Entrega de tareas en apartado alumno/tareas */
 function submitTarea() {
-    for (i = 0; i < tareasCreadas; i++) { }
+    for (i = 0; i < tareasCreadas; i++) {}
 
     let comentariosTarea = document.querySelector("#comentariosTarea").value;
     let audioTarea = document.querySelector("#audioTarea").value;
 }
-
 
 document.querySelector("#createTarea").addEventListener("click", crearTarea);
 
@@ -109,9 +98,82 @@ function crearTarea() {
 
     let tareaCreada = new Tarea(tareaTitle, tareaLevel, tareaDesc, tareaImagen);
     tareasCreadas.push(tareaCreada);
-    console.log("Nueva tarea" + tareasCreadas);
-    /* agregarComboTareas(); */
-
 }
 
+function mostrarTareasPorNivel() {
+    const tablaTareas = generarTablaTareasPorNivelEstudiante();
+    document.querySelector("#tablaTareasEstudiante").innerHTML = tablaTareas;
 
+    document
+        .querySelector("#filaTareaEstudiantes")
+        .addEventListener("click", mostrarDetallesTareaSeleccionada);
+}
+
+function generarTablaTareasPorNivelEstudiante() {
+    let tareaPorNivel = [];
+
+    for (let i = 0; i < tareas.length; i++) {
+        if (tareas[i].nivel == usuarioActual.nivel) {
+            tareaPorNivel.push(tareas[i]);
+        }
+    }
+
+    return generarTablaDeTareas(tareaPorNivel);
+}
+
+function generarTablaDeTareas(tareasParaGenerar) {
+    let tablaTareas = `<table> 
+    <tr>
+        <th>Tarea</th>
+        <th>Descripcion</th>
+    </tr>`;
+
+    for (let i = 0; i < tareasParaGenerar.length; i++) {
+        tablaTareas += ` <tr id='filaTareaEstudiantes' value='${tareasParaGenerar[i].id}'>
+            <td>${tareasParaGenerar[i].titulo}</td>
+            <td>${tareasParaGenerar[i].descripcion}</td>
+         </tr>`;
+    }
+
+    tablaTareas += "</table>";
+
+    return tablaTareas;
+}
+
+function buscarTareas(tareaABuscar) {
+    let tareasBuscadas = [];
+    let index = 0;
+
+    while (index < tareas.length) {
+        const tituloCoincide = tareas[index].titulo === tareaABuscar;
+        const descripcionCoincide = tareas[index].descripcion === tareaABuscar;
+        const tareaPerteneceAlNivel =
+            tareas[index].nivel === usuarioActual.nivel;
+
+        if ((tituloCoincide || descripcionCoincide) && tareaPerteneceAlNivel) {
+            tareasBuscadas.push(tareas[index]);
+        }
+        index++;
+    }
+
+    return tareasBuscadas;
+}
+
+function mostrarTareasARealizar() {
+    mostrarTareasPorNivel(usuarioActual);
+}
+
+function buscarTarea() {
+    const tareaABuscar = document.querySelector("#tareaABuscar").value;
+    const tareas = buscarTareas(tareaABuscar);
+    let tablaConTareas =
+        "Ninguna tarea fue encontrada con los datos ingresados";
+
+    if (tareas.length) {
+        tablaConTareas = generarTablaDeTareas(tareas);
+    }
+
+    document.querySelector("#tablaTareasEstudiante").innerHTML = tablaConTareas;
+}
+
+function mostrarDetallesTareaSeleccionada() {}

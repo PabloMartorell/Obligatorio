@@ -23,6 +23,8 @@ function mostrarInfoExtraPorTipoDeUsuario() {
             `;
         }
         infoExtra += "</select>";
+    } else {
+        infoExtra = "";
     }
 
     document.querySelector("#infoRegistroExtra").innerHTML = infoExtra;
