@@ -3,9 +3,39 @@ let tareasAlumno = [];
 let tareasCorregidas = [];
 let showTareas = [];
 
-function mostrarTareasAlumno() {}
 
-/* Tabla tareas entregadas en apartado Devoluciones */
+/* Tabla de tareas asignadas al alummno por nivel */
+
+function mostrarTareasAlumno() {
+
+    for (i=0; i < tareasCreadas; i++){
+
+        if (alumnoActual.nivel = tareasCreadas[i].nivel){
+
+            showTareas.push(tareasCreadas);
+        }
+
+    }
+
+    let misTareasAlumno = `
+
+    <input type="text" id="busquedaTareas">
+    <br>
+    <table>
+        <tr>
+            <th>Entregado por</th>
+            <th>Nombre Tarea</th>
+        </tr>
+        <tr>
+            <td>${tareasAlumno[i].alumno}</td>
+            
+        </tr>
+    </table>`;
+
+
+}
+
+/* Tabla tareas entregadas en apartado devoluciones/docente */
 function mostrarTareasDevoluciones() {
     for (i = 0; i < tareasCreadas.length; i++) {
         let tablaDevoluciones = `
@@ -27,7 +57,7 @@ function mostrarTareasDevoluciones() {
     /* document.querySelector("#devolucionesTable").innerHTML = tablaDevoluciones; */
 }
 
-/* Mostrar informacion de tarea  e ingresar devolucion */
+/* Tarea entregada e ingreso de devolucion en apartado devoluciones/docente */
 function mostrarTareaInfo() {
     let tareaSeleccionada = document.querySelector(
         "#tareaSeleccionInfoDevoluciones"
@@ -43,52 +73,45 @@ function mostrarTareaInfo() {
         <br>
         <button id="enviarDevolucion">ENVIAR<button>
     `;
-    document.querySelector("#infoTareaDevolucion").innerHTML =
-        infoTareaDevolucion;
+    document.querySelector("#infoTareaDevolucion").innerHTML =infoTareaDevolucion;
+    
 }
 
-function estadisticasAlumno() {
-    let alumnoSeleccionado = document.querySelector(
-        "#alumnoSeleccionado"
-    ).value;
+/* Agregar tareas al combobox */
+/* function agregarComboTareas() {
+    let listadoTareas ='<option value="">Seleccione...</option>';
 
-    for (i = 0; i < tareasAlumno; i++) {
-        if (alumnoSeleccionado[i].nombre == alumnoSeleccionado) {
-        }
-    }
-}
-
-/* Agregar tareas */
-function agregarComboTareas() {
-    let listadoTareas;
-
-    for (i = 0; i < tareas.length; i++) {
+    for (i = 0; i < tareasCreadas.length; i++) {
         const tareaActual = tareasCreadas[i];
         listadoTareas += `<option value="${tareaActual.id}">${tareaActual.nombre}></option>`;
     }
-
+   
     document.querySelector("#AlumnoDisplay").innerHTML = listadoTareas;
-}
+} */
 
-/* Entrega de tareas por parte del alumno */
+/* Entrega de tareas en apartado alumno/tareas */
 function submitTarea() {
-    for (i = 0; i < tareasCreadas; i++) {}
+    for (i = 0; i < tareasCreadas; i++) { }
 
     let comentariosTarea = document.querySelector("#comentariosTarea").value;
     let audioTarea = document.querySelector("#audioTarea").value;
 }
 
+
+document.querySelector("#createTarea").addEventListener("click", crearTarea);
+
+/* Creacion de tareas en el apartado crearTarea/docente */
 function crearTarea() {
     let tareaTitle = document.querySelector("#tareaTitle").value;
     let tareaDesc = document.querySelector("#tareaDesc").value;
     let tareaImagen = document.querySelector("#tareaImagen").value;
     let tareaLevel = document.querySelector("#tareaLevel").value;
 
-    let tareaCreada = new tarea(tareaTitle, tareaLevel, tareaDesc, tareaImagen);
-
+    let tareaCreada = new Tarea(tareaTitle, tareaLevel, tareaDesc, tareaImagen);
     tareasCreadas.push(tareaCreada);
-    agregarTareas();
+    console.log("Nueva tarea" + tareasCreadas);
+    /* agregarComboTareas(); */
 
-    console.log(tareasCreadas);
-    console.log("_______________________");
 }
+
+

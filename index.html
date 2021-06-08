@@ -78,13 +78,20 @@
         <div id="mensajeBienvenida"></div>
 
         <div id="pantallaAlumno" style="display:none">
-                            <!-- !!!!!!!!!  ACA VA TODO LO DEL ALUMNO !!!!!!!!!! -->
+            <!-- !!!!!!!!!  ACA VA TODO LO DEL ALUMNO !!!!!!!!!! -->
         </div>
 
         <div id="pantallaDocente" style="display:none">
-             <!-- !!!!!!!!!  ACA VA TODO LO DEL DOCENTE !!!!!!!!!! -->
-            <div class="rightPanel">
-                <label>Alumno</label>
+            <!-- !!!!!!!!!  ACA VA TODO LO DEL DOCENTE !!!!!!!!!! -->
+
+            <!-- Apartado Alumnos -->
+            <div id="gestionAlumnos">
+                <div id="tablaAlumnos" class="leftPannel">
+
+                </div>
+                <div id="alumnoSeleccionadoInfo" class="rightPannel">
+
+                </div>
             </div>
 
 
@@ -108,11 +115,15 @@
             </div>
             <!-- Apartado Crear Tareas -->
 
-            <div class="centrePanel">
+            <div class="centrePannel">
 
                 <h1>Crear Tarea</h1>
                 <br>
 
+                <label for="tareaTitle">TITULO</label>
+                <br>
+                <input type="text" id="tareaTitle">
+                <br>
                 <label for="tareaDesc">DESCRIPCION</label>
                 <br>
                 <textarea id="tareaDesc"></textarea>
@@ -134,6 +145,7 @@
         </div>
     </div>
 
+    <script type="text/JavaScript" src="gestionAlumnos.js"></script>
     <script type="text/JavaScript" src="alumno.js"></script>
     <script type="text/JavaScript" src="docente.js"></script>
     <script type="text/JavaScript" src="entrega.js"></script>
@@ -146,4 +158,5 @@
     <script type="text/JavaScript" src="login.js"></script>
     <script type="text/JavaScript" src="main.js"></script>
 </body>
+
 </html>
