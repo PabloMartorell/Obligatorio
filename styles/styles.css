@@ -1,5 +1,10 @@
 .navBar {
     background-color: rgb(167, 202, 235);
+    display: grid; /*A parir de aca agregue los grids */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas: "empty tareasEstudiante entregas infoPerfil";
 }
 
 .btnOpciones {
@@ -54,4 +59,16 @@
     width: 40px;
     border: solid;
     border-radius: 100px;
+}
+
+.opcion-tarea-estudiante {
+    grid-area: entregas;
+    margin: 4vh;
+    padding: 2vh;
+}
+
+.opcion-entrega-estudiante {
+    grid-area: tareasEstudiante;
+    margin: 4vh;
+    padding: 2vh;
 }

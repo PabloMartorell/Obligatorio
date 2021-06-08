@@ -4,6 +4,7 @@ function login() {
     const usuario = usuarioExiste(nombreUsuario, contraseña);
     if (usuario != null) {
         ingresarUsuario(usuario);
+        usuarioActual = usuario;
     } else {
         mostrarLoginError();
     }
@@ -21,11 +22,11 @@ function buscarUsuario(nombreUsuario, contraseña) {
         const usuarioCoincide =
             usuarios[contador].nombreUsuario === nombreUsuario;
         const contraseñaCoincide = usuarios[contador].contraseña === contraseña;
-        contador++;
 
         if (usuarioCoincide && contraseñaCoincide) {
             usuario = usuarios[contador];
         }
+        contador++;
     }
 
     return usuario;
@@ -42,6 +43,7 @@ function ingresarUsuarioPorPerfil(perfil) {
     if (perfil == PERFIL_ALUMNO) {
         ingresarAlumno();
         mostrarImagenPerfilAlumno();
+        mostrarTareasARealizar();
     } else if (perfil == PERFIL_DOCENTE) {
         ingresarDocente();
         mostrarImagenPerfilDocente();

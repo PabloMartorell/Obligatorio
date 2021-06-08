@@ -7,6 +7,7 @@ function precargarDatos() {
 function precargarUsuarios() {
     crearDocentes();
     crearAlumnos();
+    crearTareas();
     console.log("usuarios", usuarios); //BORRAR ESTO ANTES DE LA ENTREGA
 }
 
@@ -85,4 +86,28 @@ function crearAlumno(
 
     alumnos.push(alumno);
     usuarios.push(alumno);
+}
+
+function crearTareas() {
+    for (let i = 1; i <= 10; i++) {
+        let nivel = NIVEL_INICIAL;
+        const titulo = "Tarea Prueba " + i;
+        const descripcion = "Esta es la descripción de la Tarea Prueba " + i;
+        const foto = "";
+
+        if (i >= 4 && i <= 6) {
+            nivel = NIVEL_INTERMEDIO;
+        } else if (i > 6) {
+            nivel = NIVEL_AVANZADO;
+        }
+        const datosId = titulo + nivel;
+        const id = generarId(datosId);
+        crearTarea(titulo, nivel, descripcion, foto, id);
+    }
+    console.log("tareas ", tareas);
+}
+
+function crearTarea(titulo, nivel, descripcion, foto, id) {
+    const tarea = new Tarea(titulo, nivel, descripcion, foto, id);
+    tareas.push(tarea);
 }
