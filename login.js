@@ -4,7 +4,7 @@ function login() {
     const usuario = usuarioExiste(nombreUsuario, contraseña);
     if (usuario != null) {
         ingresarUsuario(usuario);
-        usuarioActual = usuario;
+        usuarioActual = { ...usuario };
     } else {
         mostrarLoginError();
     }
@@ -37,12 +37,14 @@ function ingresarUsuario(usuario) {
     ingresarUsuarioPorPerfil(usuario.perfil);
     mostrarPantallaPorId("banner");
     mostrarMensajeBienvendia(usuario);
+    mostrarPantallaPorId("mensajeBienvenida");
 }
 
 function ingresarUsuarioPorPerfil(perfil) {
     if (perfil == PERFIL_ALUMNO) {
         ingresarAlumno();
         mostrarImagenPerfilAlumno();
+        mostrarPantallaPorId("pantallaTareasEstudiante");
         mostrarTareasARealizar();
     } else if (perfil == PERFIL_DOCENTE) {
         ingresarDocente();

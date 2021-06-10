@@ -22,15 +22,31 @@ function inicializar() {
 
     document
         .querySelector("#opcionTareasEstudiante")
-        .addEventListener("click", mostrarTareasARealizar);
+        .addEventListener("click", mostrarPantallaEstudianteTareas);
+
+    document
+        .querySelector("#opcionEntregasEstudiante")
+        .addEventListener("click", mostrarPantallaEstudianteEntregas);
+
+    document
+        .querySelector("#detallesTareaSeleccionada")
+        .addEventListener("click", mostrarPantallaEstudianteEntregas);
 
     document
         .querySelector("#btnBuscarTarea")
-        .addEventListener("click", buscarTarea);
+        .addEventListener("click", buscarTarea); //TODO:Probar de si esto se puede poner para el onchange
 
     document
-        .querySelector("#filaTareaEstudiantes")
-        .addEventListener("click", mostrarDetallesTarea);
+        .querySelector("#btnAtrasDetallesTarea")
+        .addEventListener("click", regresarAMenuTareas); //TODO: hacer el back para el menu de tareas
+
+    document
+        .querySelector("#btnRealizarEntregaTarea")
+        .addEventListener("click", realizarEntregaDeTarea); //TODO: hacer la logica de realizar la entrega
+
+    // document
+    //     .querySelector("#filaTareaEstudiantes")
+    //     .addEventListener("click", mostrarDetallesTarea);
 }
 function mostrarPerfilDesplegable() {
     let desplegable = document.querySelector("#opcionesDesplegable").style
