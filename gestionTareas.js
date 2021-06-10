@@ -100,20 +100,20 @@ function crearTarea() {
     tareasCreadas.push(tareaCreada);
 }
 
-function mostrarTareasPorNivel() {
-    const tablaTareas = generarTablaTareasPorNivelEstudiante();
+function mostrarTareasPorNivel(usuario) {
+    const tablaTareas = generarTablaTareasPorEstudiante(usuario);
     document.querySelector("#tablaTareasEstudiante").innerHTML = tablaTareas;
 
-    document
-        .querySelector("#filaTareaEstudiantes")
-        .addEventListener("click", mostrarDetallesTareaSeleccionada);
+    // document
+    //     .querySelector("#filaTareaEstudiantes")
+    //     .addEventListener("click", mostrarDetallesTareaSeleccionada);
 }
 
-function generarTablaTareasPorNivelEstudiante() {
+function generarTablaTareasPorEstudiante(usuario) {
     let tareaPorNivel = [];
 
     for (let i = 0; i < tareas.length; i++) {
-        if (tareas[i].nivel == usuarioActual.nivel) {
+        if (tareas[i].nivel == usuario.nivel) {
             tareaPorNivel.push(tareas[i]);
         }
     }
@@ -126,12 +126,14 @@ function generarTablaDeTareas(tareasParaGenerar) {
     <tr>
         <th>Tarea</th>
         <th>Descripcion</th>
+        <th></th>
     </tr>`;
 
     for (let i = 0; i < tareasParaGenerar.length; i++) {
-        tablaTareas += ` <tr id='filaTareaEstudiantes' value='${tareasParaGenerar[i].id}'>
+        tablaTareas += ` <tr>
             <td>${tareasParaGenerar[i].titulo}</td>
             <td>${tareasParaGenerar[i].descripcion}</td>
+            <td ><p id="btnVerDetallesTarea" value='${tareasParaGenerar[i].id}'>Ver Detalles</p></td>
          </tr>`;
     }
 
@@ -159,21 +161,80 @@ function buscarTareas(tareaABuscar) {
     return tareasBuscadas;
 }
 
-function mostrarTareasARealizar() {
-    mostrarTareasPorNivel(usuarioActual);
+function mostrarTareasARealizar(usuario) {
+    mostrarTareasPorNivel(usuario);
 }
 
 function buscarTarea() {
     const tareaABuscar = document.querySelector("#tareaABuscar").value;
-    const tareas = buscarTareas(tareaABuscar);
+    let tareasBuscadas = buscarTareaPorTitulo(tareaABuscar);
+
+    if (!tareasBuscadas.length) {
+        tareasBuscadas = buscarTareaPorDescripcion(tareaABuscar);
+    }
+
     let tablaConTareas =
         "Ninguna tarea fue encontrada con los datos ingresados";
 
-    if (tareas.length) {
-        tablaConTareas = generarTablaDeTareas(tareas);
+    if (tareasBuscadas.length) {
+        tablaConTareas = generarTablaDeTareas(tareasBuscadas);
     }
 
     document.querySelector("#tablaTareasEstudiante").innerHTML = tablaConTareas;
 }
 
-function mostrarDetallesTareaSeleccionada() {}
+function buscarTareaPorTitulo(titulo) {
+    let tareasEncontradas = [];
+    let index = 0;
+
+    while (index < tareas.length) {
+        const tituloCoincide = tareas[index].titulo == titulo;
+        const tareaPerteneceAlNivel =
+            tareas[index].nivel == usuarioActual.nivel;
+
+        if (tituloCoincide && tareaPerteneceAlNivel) {
+            tareasEncontradas.push(tareas[index]);
+        }
+        index++;
+    }
+
+    return tareasEncontradas;
+}
+
+function buscarTareaPorDescripcion(descripcion) {
+    let tareasEncontradas = [];
+    let index = 0;
+
+    while (index < tareas.length) {
+        const descripcionCoincide = tareas[index].descripcion == descripcion;
+        const tareaPerteneceAlNivel =
+            tareas[index].nivel == usuarioActual.nivel;
+
+        if (descripcionCoincide && tareaPerteneceAlNivel) {
+            tareasEncontradas.push(tareas[index]);
+        }
+        index++;
+    }
+
+    return tareasEncontradas;
+}
+
+// function mostrarPantallaDetallesTareaSeleccionada() {
+//     const tareaTitle = document.querySelector("#btnVerDetallesTarea").value;
+//     console.log("tarea seleccionada", tareaTitle);
+// } //TODO: hacer la logica para mostrar los detalles de la tarea seleccionada
+
+function regresarAMenuTareas() {
+    ocultarPantallaPorId("detallesTareaSeleccionada");
+    mostrarPantallaPorId("pantallaTareasEstudiante");
+}
+
+function mostrarPantallaEstudianteEntregas() {
+    ocultarPantallaPorId("pantallaTareasEstudiante");
+    mostrarPantallaPorId("detallesTareaSeleccionada");
+}
+
+function mostrarPantallaEstudianteTareas() {
+    ocultarPantallaPorId("detallesTareaSeleccionada");
+    mostrarPantallaPorId("pantallaTareasEstudiante");
+}

@@ -85,19 +85,19 @@
 
         <div id="pantallaAlumno" style="display:none">
             <!-- !!!!!!!!!  ACA VA TODO LO DEL ALUMNO !!!!!!!!!! -->
-            <div id='opcionTareasEstudiante'>
+            <div id='pantallaTareasEstudiante' style="display:none">
                 <div>Tareas a realizar</div>
                 <div id='contenedorTareas'>
                     <div id='buscadorTareas'>
                         <input id='tareaABuscar' type='text'></input>
                         <input id='btnBuscarTarea' type='submit' value='Buscar'></input>
                     </div>
-                    <div id='tablaTareasEstudiante'></div><!-- ACA VA LA TABLA DE LAS TAREAS -->
+                    <div id='tablaTareasEstudiante'> No tiene tareas para realizar</div><!-- ACA VA LA TABLA DE LAS TAREAS -->
                 </div>
             </div>
-            <div id='detallesTareaSeleccionada'>
-                <div id='tituloTareaSeleccionada'></div>
-                <div id='descripcionTareaSeleccionada'></div>
+            <div id='detallesTareaSeleccionada' style="display:none">
+                <div id='tituloTareaSeleccionada'></div><!-- ACA VA EL TITULO DE LA TAREA -->
+                <div id='descripcionTareaSeleccionada'></div><!-- ACA VA LA DESCRIPCION LA TAREA -->
                 <input id="btnAtrasDetallesTarea" type='submit' value="Atras"></input>
                 <input id="btnRealizarEntregaTarea" type='submit' value="Realizar Entrega"></input>
             </div>
