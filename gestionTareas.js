@@ -100,8 +100,8 @@ function crearTarea() {
     tareasCreadas.push(tareaCreada);
 }
 
-function mostrarTareasPorNivel() {
-    const tablaTareas = generarTablaTareasPorNivelEstudiante();
+function mostrarTareasPorNivel(usuario) {
+    const tablaTareas = generarTablaTareasPorEstudiante(usuario);
     document.querySelector("#tablaTareasEstudiante").innerHTML = tablaTareas;
 
     // document
@@ -109,11 +109,11 @@ function mostrarTareasPorNivel() {
     //     .addEventListener("click", mostrarDetallesTareaSeleccionada);
 }
 
-function generarTablaTareasPorNivelEstudiante() {
+function generarTablaTareasPorEstudiante(usuario) {
     let tareaPorNivel = [];
 
     for (let i = 0; i < tareas.length; i++) {
-        if (tareas[i].nivel == usuarioActual.nivel) {
+        if (tareas[i].nivel == usuario.nivel) {
             tareaPorNivel.push(tareas[i]);
         }
     }
@@ -126,12 +126,14 @@ function generarTablaDeTareas(tareasParaGenerar) {
     <tr>
         <th>Tarea</th>
         <th>Descripcion</th>
+        <th></th>
     </tr>`;
 
     for (let i = 0; i < tareasParaGenerar.length; i++) {
-        tablaTareas += ` <tr id='filaTareaEstudiantes' value='${tareasParaGenerar[i].id}'>
+        tablaTareas += ` <tr>
             <td>${tareasParaGenerar[i].titulo}</td>
             <td>${tareasParaGenerar[i].descripcion}</td>
+            <td ><p id="btnVerDetallesTarea" value='${tareasParaGenerar[i].id}'>Ver Detalles</p></td>
          </tr>`;
     }
 
@@ -159,8 +161,8 @@ function buscarTareas(tareaABuscar) {
     return tareasBuscadas;
 }
 
-function mostrarTareasARealizar() {
-    mostrarTareasPorNivel();
+function mostrarTareasARealizar(usuario) {
+    mostrarTareasPorNivel(usuario);
 }
 
 function buscarTarea() {
@@ -217,7 +219,10 @@ function buscarTareaPorDescripcion(descripcion) {
     return tareasEncontradas;
 }
 
-function mostrarDetallesTareaSeleccionada() {} //TODO: hacer la logica para mostrar los detalles de la tarea seleccionada
+// function mostrarPantallaDetallesTareaSeleccionada() {
+//     const tareaTitle = document.querySelector("#btnVerDetallesTarea").value;
+//     console.log("tarea seleccionada", tareaTitle);
+// } //TODO: hacer la logica para mostrar los detalles de la tarea seleccionada
 
 function regresarAMenuTareas() {
     ocultarPantallaPorId("detallesTareaSeleccionada");

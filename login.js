@@ -34,19 +34,19 @@ function buscarUsuario(nombreUsuario, contraseña) {
 
 function ingresarUsuario(usuario) {
     ocultarTodasLasPantallas();
-    ingresarUsuarioPorPerfil(usuario.perfil);
+    ingresarUsuarioPorPerfil(usuario);
     mostrarPantallaPorId("banner");
     mostrarMensajeBienvendia(usuario);
     mostrarPantallaPorId("mensajeBienvenida");
 }
 
-function ingresarUsuarioPorPerfil(perfil) {
-    if (perfil == PERFIL_ALUMNO) {
+function ingresarUsuarioPorPerfil(usuario) {
+    if (usuario.perfil == PERFIL_ALUMNO) {
         ingresarAlumno();
         mostrarImagenPerfilAlumno();
         mostrarPantallaPorId("pantallaTareasEstudiante");
-        mostrarTareasARealizar();
-    } else if (perfil == PERFIL_DOCENTE) {
+        mostrarTareasARealizar(usuario);
+    } else if (usuario.perfil == PERFIL_DOCENTE) {
         ingresarDocente();
         mostrarImagenPerfilDocente();
     }
