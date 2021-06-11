@@ -1,14 +1,7 @@
 /* Mostrar estadisticas del alumno seleccionado en apartado estadisticas/docente */
 function estadisticasAlumno() {
     let alumnoSeleccionado = document.querySelector("#alumnoSeleccionado").value;
-
-    /* for (i = 0; i < tareasAlumno; i++) {
-        if (alumnoSeleccionado[i].nombre == alumnoSeleccionado) {
-
-            
-        }
-    } */
-
+    
 
     let infoAlumno = `
                 
@@ -34,19 +27,24 @@ function mostrarAlumnos() {
             <tr>
                 <th>Alumnos</th>
                 
-            </tr>
+            </tr>`;
+
+    for (let i = 0; i < alumnos.length; i++) {
+
+        listadoAlumnos += ` <tr id="filaNombresEstudiantes" >
+            <td>${alumnos[i].nombre}</td>
             <tr>
-                <td>${alumnos[1].nombre}</td>
-                
-            </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-        </table>`
+        `;
 
-    document.querySelector("#tablaAlumnos").innerHTML = listadoAlumnos;
+    }
 
-    
+    listadoAlumnos += ` </table> `;
 
+    return listadoAlumnos
 
     
 
 }
+
+
 
