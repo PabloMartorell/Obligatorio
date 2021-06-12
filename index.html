@@ -8,75 +8,70 @@
 
 <body>
     <div>
-        <div>
-            <div>
-                <div id="login" style="display: block;">
-                    <h1>Login</h1>
-                    <br>
-                    <label for="usuario">Usuario</label>
-                    <br>
-                    <input id="usuario" type="text">
-                    <br><br>
-                    <label for="pass">Contraseña</label>
-                    <br>
-                    <input id="pass" type="text">
-                    <br>
-                    <br>
-                    <div id='loginError'></div>
-                    <input id="btnIngresar" type="submit" value="Ingresar"></input>
-                    <input id="btnRegistrar" type="submit" value="Registrarse"></input>
+        <div id="contenedorLogin" class="contenedor-login">
+            <div id="login" class="login">
+                <h1 class="titulo">Login</h1>
+                <br>
+                <input id="usuario" type="text" class="login-input" placeholder="Ingrese su usuario">
+                <br>
+                <input id="pass" type="text" class="login-input" placeholder="Ingrese su contraseña">
+                <br>
+                <br>
+                <div id='loginError' class="mensaje-error"></div>
+                <div id='contenedorBtnLogin' class="btns-login">
+                    <input id="btnIngresar" class="boton" type="submit" value="Ingresar"></input>
+                    <input id="btnRegistrar" class="boton" type="submit" value="Registrarse"></input>
                 </div>
+            </div>
+        </div>
 
-                <div id="registro" style="display: none;">
-                    <h1>Registro</h1>
-                    <br>
-                    <label for="nombreRegistro">Nombre</label>
-                    <br>
-                    <input id="nombreRegistro" type="text">
-                    <br><br>
-                    <label for="usuarioRegistro">Ususario</label>
-                    <br>
-                    <input id="usuarioRegistro" type="text">
-                    <br><br>
-                    <label for="contraseñaRegistro">Contraseña</label>
-                    <br>
-                    <input id="contraseñaRegistro" type="text">
-                    <br>
-                    <br>
-                    <label for="tipoUsuarioRegistro">Tipo de usuario:</label>
-                    <select id="tipoUsuarioRegistro">
+        <div id="registro" class="contenedor-login" style="display: none;">
+            <div id="login" class="login">
+                <h1 class="titulo">Registro</h1>
+                <br>
+                <input id="nombreRegistro" type="text" class="login-input" placeholder="Nombre">
+                <br>
+                <input id="usuarioRegistro" type="text" class="login-input" placeholder="Ususario">
+                <br>
+                <input id="contraseñaRegistro" type="text" class="login-input" placeholder="Contraseña">
+                <br>
+                <br>
+                    <select id="tipoUsuarioRegistro" class="select">
+                        <option value="tipoUsuario">Tipo de usuario</option>
                         <option value="docente">Docente</option>
                         <option value="alumno">Alumno</option>
                     </select>
-                    <br>
-                    <br>
-                    <div id='infoRegistroExtra'></div>
-                    <br>
-                    <br>
-                    <div id='registroError'></div>
-                    <input id="btnRegistrarse" type="submit" value="Registrarse"></input>
-                    <input id="btnCancelarRegistro" type="submit" value="Cancelar"></input>
+                <br>
+                <div id='infoRegistroExtra' class="info-registro-extra"></div>
+                <br>
+                <br>
+                <div id='registroError' class="mensaje-error"></div>
+                <div class="btns-registro">
+                    <input class="boton" id="btnRegistrarse" type="submit" value="Registrarse"></input>
+                    <input class="boton" id="btnCancelarRegistro" type="submit" value="Cancelar"></input>
                 </div>
-                <div id="banner" style="display:none;">
-                    <!--Aca va el background y todo para la navBar-->
-                    <div id='perfilInfo' class="navBar">
-                        <div id="opcionesDocente"></div>
-                        <div id="opcionesAlumno">
-                            <input id="opcionTareasEstudiante" type='submit' value="Tareas"></input>
-                            <input id="opcionEntregasEstudiante" type='submit' value="Entregas"></input>
-                        </div>
-                        <div class="desplegable">
-                            <div id='imagenPefril'></div>
-                            <div class="btnOpciones">Perfil</div>
-                            <!--Cambiar este valor por el nombre de usuario?-->
-                            <div class="opciones-desplegables">
-                                <input id="logOut" type='submit' value="Log Out" class="opcion-desplegable"></input>
-                            </div>
-                        </div>
+            </div>
+        </div>
+        <div id="banner" style="display:none;">
+            <!--Aca va el background y todo para la navBar-->
+            <div id='perfilInfo' class="navBar">
+                <div id="opcionesDocente"></div>
+                <div id="opcionesAlumno">
+                    <input id="opcionTareasEstudiante" type='submit' value="Tareas"></input>
+                    <input id="opcionEntregasEstudiante" type='submit' value="Entregas"></input>
+                </div>
+                <div class="desplegable">
+                    <div id='imagenPefril'></div>
+                    <div class="btnOpciones">Perfil</div>
+                    <!--Cambiar este valor por el nombre de usuario?-->
+                    <div class="opciones-desplegables">
+                        <input id="logOut" type='submit' value="Log Out" class="opcion-desplegable"></input>
                     </div>
                 </div>
             </div>
         </div>
+
+
         <div id="opcionesDesplegable" style="display: none;" class="dropdown-content">
             <input id="logOut" type='submit' value="Log Out"></input>
         </div>
@@ -92,19 +87,25 @@
                         <input id='tareaABuscar' type='text'></input>
                         <input id='btnBuscarTarea' type='submit' value='Buscar'></input>
                     </div>
-                    <div id='tablaTareasEstudiante'> No tiene tareas para realizar</div><!-- ACA VA LA TABLA DE LAS TAREAS -->
+                    <div id='tablaTareasEstudiante'> No tiene tareas para realizar</div>
+                    <!-- ACA VA LA TABLA DE LAS TAREAS -->
                 </div>
             </div>
             <div id='detallesTareaSeleccionada' style="display:none">
+                <!-- HACER ESTO!! MOSTRAR TODA LA INFO DE LA TAREA -->
                 <div id='tituloTareaSeleccionada'></div><!-- ACA VA EL TITULO DE LA TAREA -->
                 <div id='descripcionTareaSeleccionada'></div><!-- ACA VA LA DESCRIPCION LA TAREA -->
                 <input id="btnAtrasDetallesTarea" type='submit' value="Atras"></input>
                 <input id="btnRealizarEntregaTarea" type='submit' value="Realizar Entrega"></input>
             </div>
+
+            <div id='pantallaEstudianteTareasEntregadas' style="display:none">
+                <div>ENTREGAS</div>
+                <div id='tablaTareasEntregadasEstudiante'></div>
+                <div id='tablaEntregasInfo'></div>
+            </div>
+
         </div>
-
-
-
 
         <div id="pantallaDocente" style="display:none">
             <!-- !!!!!!!!!  ACA VA TODO LO DEL DOCENTE !!!!!!!!!! -->
@@ -199,6 +200,7 @@
     <script type="text/JavaScript" src="datos.js"></script>
     <script type="text/Javascript" src="gestionTareas.js"></script>
     <script type="text/JavaScript" src="gestionAlumnos.js"></script>
+    <script type="text/JavaScript" src="gestionEntregas.js"></script>
     <script type="text/JavaScript" src="utilidades.js"></script>
     <script type="text/JavaScript" src="fabricaDatos.js"></script>
     <script type="text/JavaScript" src="registro.js"></script>

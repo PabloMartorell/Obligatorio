@@ -1,3 +1,114 @@
+.contenedor-login {
+    display: block;
+    width: 30%;
+    background: #fff;
+    border-radius: 10px;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 10%;
+    overflow: hidden;
+    padding: 55px 55px 33px;
+    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo {
+    font-family: Poppins-Bold, sans-serif;
+    font-size: 30px;
+    color: hsl(0deg 1% 26%);
+    line-height: 1.2;
+    text-align: center;
+}
+
+.btns-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.btns-registro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.login-input {
+    border-radius: 18px;
+    padding: 16px;
+    border: unset;
+    background: hsl(0deg 0% 100% / 0%);
+    text-align: center;
+    font-size: 15px;
+    box-shadow: 1px 2px 2px 0px hsl(219deg 54% 64% / 36%);
+    outline: none;
+    width: 80%;
+}
+
+.boton {
+    border: unset;
+    width: 60%;
+    padding: 10px;
+    border-radius: 25px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background: hsl(238deg 4% 71% / 10%);
+}
+
+.boton:hover {
+    box-shadow: 0px 0px 16px 2px hsl(219deg 98% 48% / 36%);
+    transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* background-color: rgba(25, 153, 212, 0.226); */
+}
+
+.label-tipo-usuario {
+    font-family: Poppins-Bold, sans-serif;
+    font-size: 18px;
+    color: hsl(0deg 1% 26%);
+}
+
+.select {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+.select {
+    cursor: pointer;
+    padding: 10px 15px;
+    outline: none;
+    border: none;
+    border-radius: 25px;
+    text-align-last: center;
+    background: hsl(0deg 0% 100% / 0%);
+    font-size: 15px;
+    box-shadow: 1px 2px 2px 0px hsl(219deg 54% 64% / 36%);
+    width: 86%;
+}
+
+.select:hover,
+.select:focus {
+    color: #000000;
+    background: #c0e4f1;
+}
+
+.mensaje-error {
+    margin-bottom: 16px;
+    color: red;
+    font-size: 1.8vh;
+}
+
+.info-registro-extra {
+    width: 100%;
+    text-align-last: center;
+}
+
 .navBar {
     background-color: rgb(167, 202, 235);
     display: grid; /*A parir de aca agregue los grids */

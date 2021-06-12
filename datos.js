@@ -11,5 +11,4 @@ let docentes = [];
 let alumnos = [];
 let usuarios = [];
 let tareas = [];
-let tareasACorregir = [];
-let tareasCorregidas = [];
+let tareasEntregadas = [];

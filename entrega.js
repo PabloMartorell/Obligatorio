@@ -1,9 +1,10 @@
 class Entrega {
-    constructor(alumno, titulo, comentario, audio, corregida) {
-        this.alumno = alumno;
-        this.titulo = titulo;
+    constructor(nombreUsuario, tarea, comentario, audio, corregida, idTarea) {
+        this.nombreUsuario = nombreUsuario;
+        this.tarea = tarea;
         this.comentario = comentario;
         this.audio = audio;
         this.corregida = corregida;
+        this.idTarea = idTarea;
     }
 }
