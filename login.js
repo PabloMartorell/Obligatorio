@@ -4,7 +4,7 @@ function login() {
     const usuario = usuarioExiste(nombreUsuario, contraseña);
     if (usuario != null) {
         ingresarUsuario(usuario);
-        usuarioActual = usuario;
+        usuarioActual = { ...usuario };
     } else {
         mostrarLoginError();
     }
@@ -34,17 +34,19 @@ function buscarUsuario(nombreUsuario, contraseña) {
 
 function ingresarUsuario(usuario) {
     ocultarTodasLasPantallas();
-    ingresarUsuarioPorPerfil(usuario.perfil);
+    ingresarUsuarioPorPerfil(usuario);
     mostrarPantallaPorId("banner");
     mostrarMensajeBienvendia(usuario);
+    mostrarPantallaPorId("mensajeBienvenida");
 }
 
-function ingresarUsuarioPorPerfil(perfil) {
-    if (perfil == PERFIL_ALUMNO) {
+function ingresarUsuarioPorPerfil(usuario) {
+    if (usuario.perfil == PERFIL_ALUMNO) {
         ingresarAlumno();
         mostrarImagenPerfilAlumno();
-        mostrarTareasARealizar();
-    } else if (perfil == PERFIL_DOCENTE) {
+        mostrarPantallaPorId("pantallaTareasEstudiante");
+        mostrarTareasARealizar(usuario);
+    } else if (usuario.perfil == PERFIL_DOCENTE) {
         ingresarDocente();
         mostrarImagenPerfilDocente();
     }

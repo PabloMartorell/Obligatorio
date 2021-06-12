@@ -104,7 +104,6 @@ function crearTareas() {
         const id = generarId(datosId);
         crearTarea(titulo, nivel, descripcion, foto, id);
     }
-    console.log("tareas ", tareas);
 }
 
 function crearTarea(titulo, nivel, descripcion, foto, id) {

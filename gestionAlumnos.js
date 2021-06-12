@@ -12,7 +12,7 @@ function estadisticasAlumno() {
                 <p>Tareas Asignadas</p>
 
 
-            `
+            `;
 
     document.querySelector("#estadisticasAlumno").innerHTML = infoAlumno;
 }
