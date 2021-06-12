@@ -12,11 +12,10 @@ function mostrarInfoExtraPorTipoDeUsuario() {
         "#tipoUsuarioRegistro"
     ).value;
     const esAlumno = tipoUsuarioSeleccionado == PERFIL_ALUMNO;
-    let infoExtra =
-        "<label for='docenteReferido'>Seleccione su docente:</label><br>";
+    let infoExtra = `<select id='docenteReferido' class='select'>
+        <option value="tipoDocente">Seleccione su Docente</option>`;
 
     if (esAlumno) {
-        infoExtra += "<select id='docenteReferido'>";
         for (let i = 0; i < docentes.length; i++) {
             infoExtra += `
             <option value="${docentes[i].nombreUsuario}">${docentes[i].nombre} (${docentes[i].nombreUsuario})</option>

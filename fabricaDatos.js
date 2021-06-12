@@ -8,7 +8,10 @@ function precargarUsuarios() {
     crearDocentes();
     crearAlumnos();
     crearTareas();
+    crearEntregas();
     console.log("usuarios", usuarios); //BORRAR ESTO ANTES DE LA ENTREGA
+    console.log("tareas ", tareas);
+    console.log("tareasEntregadas ", tareasEntregadas);
 }
 
 function crearAlumnos() {
@@ -109,4 +112,50 @@ function crearTareas() {
 function crearTarea(titulo, nivel, descripcion, foto, id) {
     const tarea = new Tarea(titulo, nivel, descripcion, foto, id);
     tareas.push(tarea);
+}
+
+function crearEntregas() {
+    for (let i = 0; i < usuarios.length; i++) {
+        const usuario = usuarios[i];
+        if (usuario.perfil != null && usuario.perfil == PERFIL_ALUMNO) {
+            for (let j = 1; j <= 3; j++) {
+                if (usuario.nivel == tareas[j].nivel) {
+                    const nombreUsuario = usuario.nombreUsuario;
+                    const tarea = tareas[j];
+                    const comentario = "Esta entrega es una prueba";
+                    const audio = `ej${j}.m4a`;
+                    const corregida = true;
+                    const idTarea = tareas[j].id;
+
+                    crearEntrega(
+                        nombreUsuario,
+                        tarea,
+                        comentario,
+                        audio,
+                        corregida,
+                        idTarea
+                    );
+                }
+            }
+        }
+    }
+}
+
+function crearEntrega(
+    nombreUsuario,
+    tarea,
+    comentario,
+    audio,
+    corregida,
+    idTarea
+) {
+    const entrega = new Entrega(
+        nombreUsuario,
+        tarea,
+        comentario,
+        audio,
+        corregida,
+        idTarea
+    );
+    tareasEntregadas.push(entrega);
 }

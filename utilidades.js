@@ -7,7 +7,7 @@ function ocultarPantallaPorId(idPantalla) {
 }
 
 function ocultarTodasLasPantallas() {
-    document.querySelector("#login").style.display = "none";
+    document.querySelector("#contenedorLogin").style.display = "none";
     document.querySelector("#pantallaAlumno").style.display = "none";
     document.querySelector("#registro").style.display = "none";
     document.querySelector("#pantallaDocente").style.display = "none";
@@ -84,7 +84,7 @@ function mostrarImagenPerfilDocente() {
 
 function volverAlInicio() {
     ocultarTodasLasPantallas();
-    mostrarPantallaPorId("login");
+    mostrarPantallaPorId("contenedorLogin");
 }
 
 function mostrarMensajeBienvendia(usuario) {

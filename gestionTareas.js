@@ -238,10 +238,12 @@ function regresarAMenuTareas() {
 
 function mostrarPantallaEstudianteEntregas() {
     ocultarPantallaPorId("pantallaTareasEstudiante");
-    mostrarPantallaPorId("detallesTareaSeleccionada");
+    mostrarPantallaPorId("pantallaEstudianteTareasEntregadas");
+    mostrarEntregas();
 }
 
 function mostrarPantallaEstudianteTareas() {
     ocultarPantallaPorId("detallesTareaSeleccionada");
+    ocultarPantallaPorId("pantallaEstudianteTareasEntregadas");
     mostrarPantallaPorId("pantallaTareasEstudiante");
 }
