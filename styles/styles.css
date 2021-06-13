@@ -138,40 +138,18 @@
     margin-top: 16px;
 }
 
-.leftPannel {
-    border-color: #0845a1;
-    float: left;
-    margin: 10px 50px;
-    height: 300px;
-    width: 400px;
-    border-style: solid;
-}
-
-.rightPannel {
-    border-style: solid;
-    float: right;
-    margin: 10px 50px;
-    height: 300px;
-    width: 400px;
-    border-color: #0845a1;
-}
-
-.centrePannel {
-    align-items: center;
-
-    border-style: solid;
-    border-color: #0845a1;
-    float: left;
-
-    height: 300px;
-}
-
 .menu-container {
     display: none;
     position: relative;
     margin-bottom: 20px;
     background: #ecf0f1;
+    height: 11vh;
 }
+
+.menu {
+    height: 100%;
+}
+
 .menu ul {
     list-style: none;
     display: flex;
@@ -187,7 +165,9 @@
 
 .contenedor-perfil {
     position: relative;
-    left: 10%;
+    left: 8%;
+    top: -8.5vh;
+    width: 8%;
 }
 
 .btn-menu {
@@ -263,7 +243,7 @@ tr:hover {
 }
 
 .btn-buscar {
-    width: 6%;
+    width: 8%;
     margin-left: 10px;
     box-shadow: 0px 0px 6px 1px hsl(219deg 98% 48% / 36%);
     background: #c5e6f1;

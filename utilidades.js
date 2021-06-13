@@ -6,13 +6,29 @@ function ocultarPantallaPorId(idPantalla) {
     document.querySelector(`#${idPantalla}`).style.display = "none";
 }
 
+function mostrarFlexPorId(idPantalla) {
+    document.querySelector(`#${idPantalla}`).style.display = "flex";
+}
+
 function ocultarTodasLasPantallas() {
     document.querySelector("#contenedorLogin").style.display = "none";
     document.querySelector("#pantallaAlumno").style.display = "none";
     document.querySelector("#registro").style.display = "none";
     document.querySelector("#pantallaDocente").style.display = "none";
     document.querySelector("#banner").style.display = "none";
+    document.querySelector("#opcionesDocente").style.display = "none";
+    document.querySelector("#opcionesAlumno").style.display = "none";
     document.querySelector("#mensajeBienvenida").style.display = "none";
+}
+
+function ocultarTodasLasPantallasDocente() {
+    document.querySelector("#pantallaInfoAlumnosDocente").style.display =
+        "none";
+    document.querySelector("#pantallaEstadisticasDocente").style.display =
+        "none";
+    document.querySelector("#pantallaDevolucionesDocente").style.display =
+        "none";
+    document.querySelector("#pantallaCrearTareaDocente").style.display = "none";
 }
 
 function verificarDatosDeUsuario(nombreUsuario, contraseña) {
@@ -73,7 +89,7 @@ function mostrarImagenPerfilAlumno() {
     let imagenPerfil =
         '<img class="imgPerfil" src="img/estudiante.png" alt="Imagen Perfil" width="200">';
     document.querySelector("#imagenPefril").innerHTML = imagenPerfil;
-    mostrarPantallaPorId("banner");
+    //mostrarPantallaPorId("banner");
 }
 
 function mostrarImagenPerfilDocente() {
