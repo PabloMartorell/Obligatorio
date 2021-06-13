@@ -3,8 +3,8 @@ function login() {
     const contraseña = document.querySelector("#pass").value;
     const usuario = usuarioExiste(nombreUsuario, contraseña);
     if (usuario != null) {
-        ingresarUsuario(usuario);
         usuarioActual = { ...usuario };
+        ingresarUsuario(usuario);
     } else {
         mostrarLoginError();
     }
@@ -34,18 +34,15 @@ function buscarUsuario(nombreUsuario, contraseña) {
 
 function ingresarUsuario(usuario) {
     ocultarTodasLasPantallas();
-    ingresarUsuarioPorPerfil(usuario);
     mostrarPantallaPorId("banner");
     mostrarMensajeBienvendia(usuario);
     mostrarPantallaPorId("mensajeBienvenida");
+    ingresarUsuarioPorPerfil(usuario);
 }
 
 function ingresarUsuarioPorPerfil(usuario) {
     if (usuario.perfil == PERFIL_ALUMNO) {
         ingresarAlumno();
-        mostrarImagenPerfilAlumno();
-        mostrarPantallaPorId("pantallaTareasEstudiante");
-        mostrarTareasARealizar(usuario);
     } else if (usuario.perfil == PERFIL_DOCENTE) {
         ingresarDocente();
         mostrarImagenPerfilDocente();
@@ -53,13 +50,19 @@ function ingresarUsuarioPorPerfil(usuario) {
 }
 
 function ingresarAlumno() {
-    ocultarTodasLasPantallas();
+    mostrarImagenPerfilAlumno();
+    mostrarPantallaPorId("pantallaTareasEstudiante");
+    mostrarTareasARealizar(usuario);
     mostrarPantallaPorId("pantallaAlumno");
+    //mostrarPantallaPorId("opcionesAlumno");
+    mostrarFlexPorId("opcionesAlumno");
 }
 
 function ingresarDocente() {
-    ocultarTodasLasPantallas();
+    obtenerAlumnosDelDocente();
     mostrarPantallaPorId("pantallaDocente");
+    mostrarFlexPorId("opcionesDocente");
+    mostrarPantallaInfoAlumnosDocente(); //Primera pantalla que ve el docente
 }
 
 function mostrarLoginError() {

@@ -48,26 +48,6 @@ function mostrarTareasDevoluciones() {
         tablaDevoluciones;
 }
 
-/* Tarea entregada e ingreso de devolucion en apartado devoluciones/docente */
-function mostrarTareaInfo() {
-    let tareaSeleccionada = document.querySelector(
-        "#tareaSeleccionInfoDevoluciones"
-    ).value;
-
-    let infoTareaDevolucion = `
-        <h1>${tareaSeleccionada.titulo}</h1>
-        <h3>${tareaSeleccionada.alumno}</h3>
-        <br>
-        <p>${tareaSeleccionada.comentario}</p>
-        <br>
-        <textarea id="devolucionComentario"></textarea>
-        <br>
-        <button id="enviarDevolucion">ENVIAR<button>
-    `;
-    document.querySelector("#infoTareaDevolucion").innerHTML =
-        infoTareaDevolucion;
-}
-
 /* Agregar tareas al combobox */
 function agregarComboTareas() {
     let listadoTareas = '<option value="">Seleccione...</option>';
@@ -88,8 +68,6 @@ function submitTarea() {
     let audioTarea = document.querySelector("#audioTarea").value;
 }
 
-document.querySelector("#createTarea").addEventListener("click", crearTarea);
-
 /* Creacion de tareas en el apartado crearTarea/docente */
 function crearTarea() {
     let tareaTitle = document.querySelector("#tareaTitle").value;
@@ -102,15 +80,15 @@ function crearTarea() {
 }
 
 function mostrarTareasPorNivel(usuario) {
-    const tablaTareas = generarTablaTareasPorEstudiante(usuario);
-    document.querySelector("#tablaTareasEstudiante").innerHTML = tablaTareas;
-
-    // document
-    //     .querySelector("#filaTareaEstudiantes")
-    //     .addEventListener("click", mostrarDetallesTareaSeleccionada);
+    const tareasPendientes = obtenerTareasPendientesPorUsuario(usuario);
+    let resultado = "Usted no tiene tareas pendientes para realiar.";
+    if (tareasPendientes.length) {
+        resultado = generarTablaDeTareas(tareasPendientes);
+    }
+    document.querySelector("#tablaTareasEstudiante").innerHTML = resultado;
 }
 
-function generarTablaTareasPorEstudiante(usuario) {
+function obtenerTareasPendientesPorUsuario(usuario) {
     let tareaPorNivel = [];
 
     for (let i = 0; i < tareas.length; i++) {
@@ -119,7 +97,7 @@ function generarTablaTareasPorEstudiante(usuario) {
         }
     }
 
-    return generarTablaDeTareas(tareaPorNivel);
+    return tareaPorNivel;
 }
 
 function generarTablaDeTareas(tareasParaGenerar) {

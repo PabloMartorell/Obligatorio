@@ -32,21 +32,21 @@ function inicializar() {
         .querySelector("#btnBuscarTarea")
         .addEventListener("click", buscarTarea); //TODO:Probar de si esto se puede poner para el onchange
 
-    // // document
-    // //     .querySelector("#detallesTareaSeleccionada")
-    // //     .addEventListener("click", mostrarPantallaDetallesTareaSeleccionada); //TODO:Hacer la logica de mostrar los dellaes de la tarea seleccionada
+    document
+        .querySelector("#opcionNuevaTareaDocente")
+        .addEventListener("click", mostrarPantallaCrearTarea);
 
-    // document
-    //     .querySelector("#btnAtrasDetallesTarea")
-    //     .addEventListener("click", regresarAMenuTareas); //TODO: hacer el back para el menu de tareas
+    document
+        .querySelector("#opcionDevolucionesDocente")
+        .addEventListener("click", mostrarPantallaDevolucionesDocente);
 
-    // document
-    //     .querySelector("#btnRealizarEntregaTarea")
-    //     .addEventListener("click", realizarEntregaDeTarea); //TODO: hacer la logica de realizar la entrega
+    document
+        .querySelector("#opcionEstadisticasDocente")
+        .addEventListener("click", mostrarPantallaEstadisticasDocente);
 
-    // // document
-    // //     .querySelector("#filaDeTablaTareaEstudiantes")
-    // //     .addEventListener("click", mostrarDetallesTareaSeleccionada);
+    document
+        .querySelector("#opcionAlumnosDocente")
+        .addEventListener("click", mostrarPantallaInfoAlumnosDocente);
 }
 function mostrarPerfilDesplegable() {
     let desplegable = document.querySelector("#opcionesDesplegable").style

@@ -7,6 +7,7 @@ const NIVEL_AVANZADO = "avanzado";
 
 let usuarioActual = {};
 
+const alumnosDelDocenteActual = [];
 let docentes = [];
 let alumnos = [];
 let usuarios = [];
