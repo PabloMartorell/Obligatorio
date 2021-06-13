@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Obligatorio</title>
     <link rel="stylesheet" href="styles/styles.css">
 </head>
-
 <body>
     <div>
         <div id="contenedorLogin" class="contenedor-login">
@@ -52,40 +50,48 @@
                 </div>
             </div>
         </div>
-        <div id="banner" style="display:none;">
-            <!--Aca va el background y todo para la navBar-->
-            <div id='perfilInfo' class="navBar">
-                <div id="opcionesDocente"></div>
-                <div id="opcionesAlumno">
-                    <input id="opcionTareasEstudiante" type='submit' value="Tareas"></input>
-                    <input id="opcionEntregasEstudiante" type='submit' value="Entregas"></input>
-                </div>
-                <div class="desplegable">
-                    <div id='imagenPefril'></div>
-                    <div class="btnOpciones">Perfil</div>
+        
+<!-- AACA EMPIEZA LA NUEVA NAV!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+
+<nav id="banner"  class="menu-container">
+    <!-- menu items -->
+    <div class="menu">
+        <ul id="opcionesDocente" style="display:none"></ul>
+        <ul id="opcionesAlumno">
+            <li>
+                <input class="btn-menu" id="opcionTareasEstudiante" type='submit' value="Tareas"></input>
+            </li>
+            <li>
+                <input class="btn-menu" id="opcionEntregasEstudiante" type='submit' value="Entregas"></input>
+            </li>
+            <li class="contenedor-perfil desplegable">
+               
+                    
+                    <div class="btn-perfil">
+                        <div class="contenedor-img" id='imagenPefril'></div>
+                    <div>Perfil</div>    
+                    </div>
                     <!--Cambiar este valor por el nombre de usuario?-->
                     <div class="opciones-desplegables">
                         <input id="logOut" type='submit' value="Log Out" class="opcion-desplegable"></input>
                     </div>
-                </div>
-            </div>
-        </div>
+                
+              </li>
+        </ul>
+    </div>
+  </nav>
 
-
-        <div id="opcionesDesplegable" style="display: none;" class="dropdown-content">
-            <input id="logOut" type='submit' value="Log Out"></input>
-        </div>
-
-        <div id="mensajeBienvenida"></div>
+        <h1 class="titulo mensaje-bienvenida" id="mensajeBienvenida"></h1>
 
         <div id="pantallaAlumno" style="display:none">
             <!-- !!!!!!!!!  ACA VA TODO LO DEL ALUMNO !!!!!!!!!! -->
             <div id='pantallaTareasEstudiante' style="display:none">
-                <div>Tareas a realizar</div>
+                <h2 class="titulo mensaje-tareas-realizar">Estas son sus tareas pendientes para realizar:</h2>
                 <div id='contenedorTareas'>
-                    <div id='buscadorTareas'>
-                        <input id='tareaABuscar' type='text'></input>
-                        <input id='btnBuscarTarea' type='submit' value='Buscar'></input>
+                    <div id='buscadorTareas' >
+                        <input class="buscador" id='tareaABuscar' placeholder="Tarea A Buscar" type='text'></input>
+                        <input class="boton btn-buscar" id='btnBuscarTarea' type='submit' value='Buscar'></input>
                     </div>
                     <div id='tablaTareasEstudiante'> No tiene tareas para realizar</div>
                     <!-- ACA VA LA TABLA DE LAS TAREAS -->

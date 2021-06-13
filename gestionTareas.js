@@ -1,10 +1,8 @@
-function mostrarTareasAlumno() { }
+function mostrarTareasAlumno() {}
 
 /* Tabla de tareas asignadas al alummno por nivel */
 
 function mostrarTareasAlumno() {
-
-    
     for (i = 0; i < tareasCreadas; i++) {
         if ((alumnoActual.nivel = tareasCreadas[i].nivel)) {
             showTareas.push(tareasCreadas);
@@ -29,29 +27,25 @@ function mostrarTareasAlumno() {
 
 /* Tabla tareas entregadas en apartado devoluciones/docente */
 function mostrarTareasDevoluciones() {
-
     let tablaDevoluciones = `
     <table>
         <tr>
             <th>Entregado por</th>
             <th>Nombre Tarea</th>
-        </tr>`
+        </tr>`;
 
     for (i = 0; i < tareasCreadas.length; i++) {
-
         tablaDevoluciones += ` 
             <tr>
                 <td>${tareasAlumno[i].alumno}</td>
                 <td>${tareasAlumno[i].titulo}</td>
-            </tr>`
-
+            </tr>`;
     }
 
-    tablaDevoluciones += `</table>`
+    tablaDevoluciones += `</table>`;
 
     document.querySelector("#tableTareaDevolucion").innerHTML =
         tablaDevoluciones;
-
 }
 
 /* Tarea entregada e ingreso de devolucion en apartado devoluciones/docente */
@@ -88,7 +82,7 @@ function agregarComboTareas() {
 
 /* Entrega de tareas en apartado alumno/tareas */
 function submitTarea() {
-    for (i = 0; i < tareasCreadas; i++) { }
+    for (i = 0; i < tareasCreadas; i++) {}
 
     let comentariosTarea = document.querySelector("#comentariosTarea").value;
     let audioTarea = document.querySelector("#audioTarea").value;

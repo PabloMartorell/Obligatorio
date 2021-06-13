@@ -28,12 +28,13 @@ function inicializar() {
         .querySelector("#opcionEntregasEstudiante")
         .addEventListener("click", mostrarPantallaEstudianteEntregas);
 
+    document
+        .querySelector("#btnBuscarTarea")
+        .addEventListener("click", buscarTarea); //TODO:Probar de si esto se puede poner para el onchange
+
     // // document
     // //     .querySelector("#detallesTareaSeleccionada")
     // //     .addEventListener("click", mostrarPantallaDetallesTareaSeleccionada); //TODO:Hacer la logica de mostrar los dellaes de la tarea seleccionada
-    // document
-    //     .querySelector("#btnBuscarTarea")
-    //     .addEventListener("click", buscarTarea); //TODO:Probar de si esto se puede poner para el onchange
 
     // document
     //     .querySelector("#btnAtrasDetallesTarea")
