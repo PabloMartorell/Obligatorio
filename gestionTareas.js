@@ -79,8 +79,8 @@ function crearTarea() {
     tareasCreadas.push(tareaCreada);
 }
 
-function mostrarTareasPorNivel(usuario) {
-    const tareasPendientes = obtenerTareasPendientesPorUsuario(usuario);
+function mostrarTareasPorNivel() {
+    const tareasPendientes = obtenerTareasPendientesPorUsuario();
     let resultado = "Usted no tiene tareas pendientes para realiar.";
     if (tareasPendientes.length) {
         resultado = generarTablaDeTareas(tareasPendientes);
@@ -88,11 +88,11 @@ function mostrarTareasPorNivel(usuario) {
     document.querySelector("#tablaTareasEstudiante").innerHTML = resultado;
 }
 
-function obtenerTareasPendientesPorUsuario(usuario) {
+function obtenerTareasPendientesPorUsuario() {
     let tareaPorNivel = [];
 
     for (let i = 0; i < tareas.length; i++) {
-        if (tareas[i].nivel == usuario.nivel) {
+        if (tareas[i].nivel == usuarioActual.nivel) {
             tareaPorNivel.push(tareas[i]);
         }
     }
@@ -140,8 +140,8 @@ function buscarTareas(tareaABuscar) {
     return tareasBuscadas;
 }
 
-function mostrarTareasARealizar(usuario) {
-    mostrarTareasPorNivel(usuario);
+function mostrarTareasARealizar() {
+    mostrarTareasPorNivel();
 }
 
 function buscarTarea() {

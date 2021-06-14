@@ -103,8 +103,8 @@ function volverAlInicio() {
     mostrarPantallaPorId("contenedorLogin");
 }
 
-function mostrarMensajeBienvendia(usuario) {
-    let mensaje = `Bienvenido ${usuario.nombre}!`;
+function mostrarMensajeBienvendia() {
+    let mensaje = `Bienvenido ${usuarioActual.nombre}!`;
     document.querySelector("#mensajeBienvenida").innerHTML = mensaje;
 }
 
