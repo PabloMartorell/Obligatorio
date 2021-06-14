@@ -10,6 +10,7 @@ function estadisticasAlumno() {
                 <h3>Nivel: ${alumnoSeleccionado[i].nivel}</h2>
                 <br>
                 <p>Tareas Asignadas</p>
+                
 
 
             `;
@@ -19,7 +20,7 @@ function estadisticasAlumno() {
 
 
 /* Listado alumnos para en el apartado de alumnos/docente */
-mostrarAlumnos();
+
 function mostrarAlumnos() {
 
     let listadoAlumnos = `
@@ -39,8 +40,11 @@ function mostrarAlumnos() {
     }
 
     listadoAlumnos += ` </table> `;
+    console.log("listado alñumno: "+listadoAlumnos);
 
-    return listadoAlumnos
+    document.querySelector("#listadoAlumnos").innerHTML = listadoAlumnos;
+
+    /* return listadoAlumnos */
 
     
 
