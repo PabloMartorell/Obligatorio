@@ -1,84 +1,3 @@
-function mostrarTareasAlumno() {}
-
-/* Tabla de tareas asignadas al alummno por nivel */
-
-function mostrarTareasAlumno() {
-    for (i = 0; i < tareasCreadas; i++) {
-        if ((alumnoActual.nivel = tareasCreadas[i].nivel)) {
-            showTareas.push(tareasCreadas);
-        }
-    }
-
-    let misTareasAlumno = `
-
-    <input type="text" id="busquedaTareas">
-    <br>
-    <table>
-        <tr>
-            <th>Entregado por</th>
-            <th>Nombre Tarea</th>
-        </tr>
-        <tr>
-            <td>${tareasAlumno[i].alumno}</td>
-            
-        </tr>
-    </table>`;
-}
-
-/* Tabla tareas entregadas en apartado devoluciones/docente */
-function mostrarTareasDevoluciones() {
-    let tablaDevoluciones = `
-    <table>
-        <tr>
-            <th>Entregado por</th>
-            <th>Nombre Tarea</th>
-        </tr>`;
-
-    for (i = 0; i < tareasCreadas.length; i++) {
-        tablaDevoluciones += ` 
-            <tr>
-                <td>${tareasAlumno[i].alumno}</td>
-                <td>${tareasAlumno[i].titulo}</td>
-            </tr>`;
-    }
-
-    tablaDevoluciones += `</table>`;
-
-    document.querySelector("#tableTareaDevolucion").innerHTML =
-        tablaDevoluciones;
-}
-
-/* Agregar tareas al combobox */
-function agregarComboTareas() {
-    let listadoTareas = '<option value="">Seleccione...</option>';
-
-    for (i = 0; i < tareasCreadas.length; i++) {
-        const tareaActual = tareasCreadas[i];
-        listadoTareas += `<option value="${tareaActual.id}">${tareaActual.nombre}></option>`;
-    }
-
-    document.querySelector("#AlumnoDisplay").innerHTML = listadoTareas;
-}
-
-/* Entrega de tareas en apartado alumno/tareas */
-function submitTarea() {
-    for (i = 0; i < tareasCreadas; i++) {}
-
-    let comentariosTarea = document.querySelector("#comentariosTarea").value;
-    let audioTarea = document.querySelector("#audioTarea").value;
-}
-
-/* Creacion de tareas en el apartado crearTarea/docente */
-function crearTarea() {
-    let tareaTitle = document.querySelector("#tareaTitle").value;
-    let tareaDesc = document.querySelector("#tareaDesc").value;
-    let tareaImagen = document.querySelector("#tareaImagen").value;
-    let tareaLevel = document.querySelector("#tareaLevel").value;
-
-    let tareaCreada = new Tarea(tareaTitle, tareaLevel, tareaDesc, tareaImagen);
-    tareasCreadas.push(tareaCreada);
-}
-
 function mostrarTareasPorNivel() {
     const tareasPendientes = obtenerTareasPendientesPorUsuario();
     let resultado = "Usted no tiene tareas pendientes para realiar.";
@@ -86,18 +5,17 @@ function mostrarTareasPorNivel() {
         resultado = generarTablaDeTareas(tareasPendientes);
     }
     document.querySelector("#tablaTareasEstudiante").innerHTML = resultado;
+    agregarEventoADetallesDeTareas();
 }
 
 function obtenerTareasPendientesPorUsuario() {
-    let tareaPorNivel = [];
-
     for (let i = 0; i < tareas.length; i++) {
         if (tareas[i].nivel == usuarioActual.nivel) {
-            tareaPorNivel.push(tareas[i]);
+            tareasPendientesDelAlumno.push(tareas[i]);
         }
     }
 
-    return tareaPorNivel;
+    return tareasPendientesDelAlumno;
 }
 
 function generarTablaDeTareas(tareasParaGenerar) {
@@ -112,13 +30,46 @@ function generarTablaDeTareas(tareasParaGenerar) {
         tablaTareas += ` <tr>
             <td>${tareasParaGenerar[i].titulo}</td>
             <td>${tareasParaGenerar[i].descripcion}</td>
-            <td ><p id="btnVerDetallesTarea" value='${tareasParaGenerar[i].id}'>Ver Detalles</p></td>
+            <td ><p class="btn-detalles-tarea" id-tarea='${tareasParaGenerar[i].id}'>Ver Detalles</p></td>
          </tr>`;
     }
 
     tablaTareas += "</table>";
 
     return tablaTareas;
+}
+
+function agregarEventoADetallesDeTareas() {
+    const botonesDetalle = document.querySelectorAll(".btn-detalles-tarea");
+
+    for (let i = 0; i < botonesDetalle.length; i++) {
+        botonesDetalle[i].addEventListener(
+            "click",
+            mostrarDetallesDeTareaPendiente
+        );
+    }
+}
+
+function mostrarDetallesDeTareaPendiente() {
+    const tareaId = this.getAttribute("id-tarea");
+    const detallesTarea = obtenerDetallesDeTareaPendiente(tareaId);
+
+    mostrarDetallesTareaSeleccionada(detallesTarea);
+    console.log("detallesTaread", detallesTarea);
+}
+
+function obtenerDetallesDeTareaPendiente(tareaId) {
+    let detallesTarea = null;
+    let index = 0;
+
+    while (index < tareasPendientesDelAlumno.length && detallesTarea == null) {
+        if (tareasPendientesDelAlumno[index].id == tareaId) {
+            detallesTarea = tareasPendientesDelAlumno[index];
+        }
+        index++;
+    }
+
+    return detallesTarea;
 }
 
 function buscarTareas(tareaABuscar) {
@@ -163,19 +114,31 @@ function buscarTarea() {
 }
 
 function buscarTareaPorTitulo(titulo) {
+    //TODO: buscar solo sobre las tareas que no estan entregadas
     let tareasEncontradas = [];
     let index = 0;
+    titulo = titulo.toUpperCase();
 
-    while (index < tareas.length) {
-        const tituloCoincide = tareas[index].titulo == titulo;
-        const tareaPerteneceAlNivel =
-            tareas[index].nivel == usuarioActual.nivel;
-
-        if (tituloCoincide && tareaPerteneceAlNivel) {
-            tareasEncontradas.push(tareas[index]);
+    for (let i = 0; i < tareas.length; i++) {
+        const tituloTarea = tareas[i].titulo.toUpperCase();
+        for (let j = 0; j < tituloTarea.length; j++) {
+            if (tituloTarea[j] == titulo) {
+                tareasEncontradas.push(tareas[i]);
+            }
         }
-        index++;
     }
+    console.log("tareasEncontradas", tareasEncontradas);
+
+    // while (index < tareas.length) {
+    //     const tituloCoincide = tareas[index].titulo == titulo;
+    //     const tareaPerteneceAlNivel =
+    //         tareas[index].nivel == usuarioActual.nivel;
+
+    //     if (tituloCoincide && tareaPerteneceAlNivel) {
+    //         tareasEncontradas.push(tareas[index]);
+    //     }
+    //     index++;
+    // }
 
     return tareasEncontradas;
 }
@@ -198,14 +161,23 @@ function buscarTareaPorDescripcion(descripcion) {
     return tareasEncontradas;
 }
 
-// function mostrarPantallaDetallesTareaSeleccionada() {
-//     const tareaTitle = document.querySelector("#btnVerDetallesTarea").value;
-//     console.log("tarea seleccionada", tareaTitle);
-// } //TODO: hacer la logica para mostrar los detalles de la tarea seleccionada
-
 function regresarAMenuTareas() {
     ocultarPantallaPorId("detallesTareaSeleccionada");
     mostrarPantallaPorId("pantallaTareasEstudiante");
+}
+
+function mostrarDetallesTareaSeleccionada(detalles) {
+    const img = `
+    <img src="${detalles.foto}" alt="Imagen de Tarea a realizar" width="250">
+    `;
+    document.querySelector("#tituloTareaSeleccionada").innerHTML =
+        detalles.titulo;
+    document.querySelector("#descripcionTareaSeleccionada").innerHTML =
+        detalles.descripcion;
+
+    document.querySelector("#imgTareaSeleccionada").innerHTML = img;
+    ocultarPantallaPorId("pantallaTareasEstudiante");
+    mostrarPantallaPorId("detallesTareaSeleccionada");
 }
 
 function mostrarPantallaEstudianteEntregas() {
@@ -217,5 +189,95 @@ function mostrarPantallaEstudianteEntregas() {
 function mostrarPantallaEstudianteTareas() {
     ocultarPantallaPorId("detallesTareaSeleccionada");
     ocultarPantallaPorId("pantallaEstudianteTareasEntregadas");
+    ocultarPantallaPorId("pantallaRealizarEntrega");
     mostrarPantallaPorId("pantallaTareasEstudiante");
+}
+
+function seleccionarImagen() {
+    deseleccionarTodasLasImagenes();
+
+    const styleImgSeleccionada = `
+    border: solid;
+    border-color: blue;
+    border-radius: 16px;`;
+
+    this.style = styleImgSeleccionada;
+    crearTareaImgSeleccionada = this.getAttribute("img-src");
+    console.log("crearTareaImgSeleccionada", crearTareaImgSeleccionada);
+}
+
+function deseleccionarTodasLasImagenes() {
+    const imagenes = document.querySelectorAll(".img");
+    for (let i = 0; i < imagenes.length; i++) {
+        imagenes[i].style = "";
+    }
+}
+
+function crearNuevaTarea() {
+    const titulo = document.querySelector("#tareaTitle").value;
+    const descripcion = document.querySelector("#tareaDesc").value;
+    const nivel = document.querySelector("#tareaLevel").value;
+    const datosValidos = validarDatosNuevaTarea(titulo, descripcion, nivel);
+
+    if (datosValidos) {
+        //TODO: hacer que el id incremente en 1
+        const tareaCreada = new Tarea(
+            titulo,
+            nivel,
+            descripcion,
+            crearTareaImgSeleccionada,
+            "id1"
+        );
+        tareas.push(tareaCreada);
+        limpiarDatosCrearTarea();
+    } else {
+        mostrarCrearTareaError();
+    }
+
+    console.log("tareas", tareas);
+}
+
+function limpiarDatosCrearTarea() {
+    ocultarPantallaPorId("crearTareaError");
+    limpiarValorElementoPorId("tareaTitle");
+    limpiarValorElementoPorId("tareaDesc");
+    deseleccionarTodasLasImagenes();
+}
+
+function validarDatosNuevaTarea(titulo, descripcion, nivel) {
+    const caracteresTotales = titulo.length + descripcion.length;
+    const cantidadCarateresValidos =
+        caracteresTotales > 20 && caracteresTotales <= 200;
+
+    const todosLosCamposSeleccionados =
+        titulo.length > 0 &&
+        descripcion.length > 0 &&
+        nivel != null &&
+        crearTareaImgSeleccionada.length > 0;
+
+    return cantidadCarateresValidos && todosLosCamposSeleccionados;
+}
+
+function mostrarCrearTareaError() {
+    mostrarPantallaPorId("crearTareaError");
+    const error = `<p class="mensaje-error">Por favor, verifique los siguientes datos:</p>
+    <p class="mensaje-error">La suma total de caracteres entre título y descripción no puede superar los 200 caracteres ni ser menor a 20 caracteres. </p>
+    <p class="mensaje-error">Todos los campos deben de estar llenos, incluyendo una imagen seleccionada.</p>
+    `;
+
+    document.querySelector("#crearTareaError").innerHTML = error;
+}
+
+function regresarADetallesTarea() {
+    mostrarPantallaEstudianteTareas();
+}
+
+function mostrarPantallaRealizaEntrega() {
+    ocultarPantallaPorId("detallesTareaSeleccionada");
+    ocultarPantallaPorId("pantallaEstudianteTareasEntregadas");
+    mostrarPantallaPorId("pantallaRealizarEntrega");
+}
+
+function cancelarEntrega() {
+    regresarADetallesTarea();
 }

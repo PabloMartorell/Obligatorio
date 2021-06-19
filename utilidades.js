@@ -10,6 +10,10 @@ function mostrarFlexPorId(idPantalla) {
     document.querySelector(`#${idPantalla}`).style.display = "flex";
 }
 
+function limpiarValorElementoPorId(idElemento) {
+    document.querySelector(`#${idElemento}`).value = "";
+}
+
 function ocultarTodasLasPantallas() {
     document.querySelector("#contenedorLogin").style.display = "none";
     document.querySelector("#pantallaAlumno").style.display = "none";
@@ -118,4 +122,18 @@ function generarId(valores) {
     }
 
     return id;
+}
+
+function obtenerDatosDelAlumno(usuarioAlumno) {
+    let usuarioConDatos = null;
+    let index = 0;
+
+    while (index < alumnosDelDocenteActual.length && usuarioConDatos == null) {
+        if (alumnosDelDocenteActual[index].nombreUsuario == usuarioAlumno) {
+            usuarioConDatos = alumnosDelDocenteActual[index];
+        }
+        index++;
+    }
+
+    return usuarioConDatos;
 }

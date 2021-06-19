@@ -248,3 +248,17 @@ tr:hover {
     box-shadow: 0px 0px 6px 1px hsl(219deg 98% 48% / 36%);
     background: #c5e6f1;
 }
+
+.btn-detalles-alumno,
+.btn-detalles-tarea {
+    color: blue;
+    font-family: Poppins-Bold, sans-serif;
+    text-align: center;
+}
+
+.btn-detalles-alumno:hover,
+.btn-detalles-tarea:hover {
+    color: hsl(225deg 77% 49%);
+    cursor: pointer;
+    text-decoration-line: underline;
+}

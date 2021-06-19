@@ -1,5 +1,7 @@
 inicializar();
 
+agregarEventoAImagenes();
+
 function inicializar() {
     document.querySelector("#btnIngresar").addEventListener("click", login);
     document
@@ -31,6 +33,9 @@ function inicializar() {
     document
         .querySelector("#btnBuscarTarea")
         .addEventListener("click", buscarTarea); //TODO:Probar de si esto se puede poner para el onchange
+    document
+        .querySelector("#tareaABuscar")
+        .addEventListener("keyup", buscarTarea);
 
     document
         .querySelector("#opcionNuevaTareaDocente")
@@ -47,7 +52,28 @@ function inicializar() {
     document
         .querySelector("#opcionAlumnosDocente")
         .addEventListener("click", mostrarPantallaInfoAlumnosDocente);
+
+    document
+        .querySelector("#btnGuardarNuevoNivelAlumno")
+        .addEventListener("click", guardarNuevoNivelAlumno);
+
+    document
+        .querySelector("#btnCrearTarea")
+        .addEventListener("click", crearNuevaTarea);
+
+    document
+        .querySelector("#btnAtrasDetallesTarea")
+        .addEventListener("click", regresarADetallesTarea);
+
+    document
+        .querySelector("#btnRealizarEntregaTarea")
+        .addEventListener("click", mostrarPantallaRealizaEntrega);
+
+    document
+        .querySelector("#btnCancelarEntrega")
+        .addEventListener("click", cancelarEntrega);
 }
+
 function mostrarPerfilDesplegable() {
     let desplegable = document.querySelector("#opcionesDesplegable").style
         .display;
@@ -61,4 +87,11 @@ function mostrarPerfilDesplegable() {
 
 function logOut() {
     volverAlInicio();
+}
+
+function agregarEventoAImagenes() {
+    const imagenesNuevaTarea = document.querySelectorAll(".img");
+    for (let i = 0; i < imagenesNuevaTarea.length; i++) {
+        imagenesNuevaTarea[i].addEventListener("click", seleccionarImagen);
+    }
 }
