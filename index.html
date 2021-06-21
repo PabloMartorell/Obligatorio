@@ -114,67 +114,68 @@
                     <!-- ACA VA LA TABLA DE LAS TAREAS -->
                 </div>
             </div>
-            <div id='detallesTareaSeleccionada' style="display:none">
+            <div id='detallesTareaSeleccionada' style="display:none; text-align: center;">
                 <!-- HACER ESTO!! MOSTRAR TODA LA INFO DE LA TAREA -->
-                <div id='tituloTareaSeleccionada'></div><!-- ACA VA EL TITULO DE LA TAREA -->
-                <div id='descripcionTareaSeleccionada'></div><!-- ACA VA LA DESCRIPCION LA TAREA -->
-                <div id='imgTareaSeleccionada'></div>
-                <input id="btnAtrasDetallesTarea" type='submit' value="Atras"></input>
-                <input id="btnRealizarEntregaTarea" type='submit' value="Realizar Entrega"></input>
+                <div class="titulo-tarea entrega-descripcion" id='tituloTareaSeleccionada'></div><!-- ACA VA EL TITULO DE LA TAREA -->
+                <div class="entrega-descripcion" id='descripcionTareaSeleccionada'></div><!-- ACA VA LA DESCRIPCION LA TAREA -->
+                <div id='imgTareaSeleccionada' style="margin-top: 16px;"></div>
+                <input class="boton btn-entrega" id="btnAtrasDetallesTarea" type='submit' value="Atras"></input>
+                <input class="boton btn-entrega" id="btnRealizarEntregaTarea" type='submit' value="Realizar Entrega"></input>
             </div>
 
             <div id='pantallaRealizarEntrega' style="display:none">
-                <div id='tituloTareaSeleccionada'></div><br><br>
-                <label for="comentariosEntregaTarea">Comentarios:</label><br>
-                <input id='comentariosEntregaTarea' type='textarea'></input><br><br>
-
+                <div id='tituloEntregaTarea'></div><br><br>
+                <label class="label" for="comentariosEntregaTarea">Comentarios:</label><br><br>
+                <textarea class="text-area" id='comentariosEntregaTarea' placeholder="Ingrese un comentario"></textarea><br><br>
+                <div class="seleccionar-audio"> Seleccione un audio: </div>
                 <div id='audioEntregaTarea'>
                     <table>
                         <tr>
-                            <td>
+                            <td class='audio' audio-src="audio/ej1.m4a">
                                 <audio controls>
                                     <source src="/audio/ej1.m4a" type="audio/mp4">
                                 </audio>
                             </td>
-                            <td>
+                            <td class='audio' audio-src="audio/ej2.m4a">
                                 <audio controls>
                                     <source src="/audio/ej2.m4a" type="audio/mp4">
                                 </audio>
                             </td>
-                            <td>
+                            <td class='audio' audio-src="audio/ej3.m4a">
                                 <audio controls>
                                     <source src="/audio/ej3.m4a" type="audio/mp4">
                                 </audio>
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class='audio' audio-src="audio/ej4.m4a">
                                 <audio controls>
                                     <source src="/audio/ej4.m4a" type="audio/mp4">
                                 </audio>
                             </td>
-                            <td>
+                            <td class='audio' audio-src="audio/ej5.m4a" >
                                 <audio controls>
                                     <source src="/audio/ej5.m4a" type="audio/mp4">
                                 </audio>
                             </td>
-                            <td>
+                            <td class='audio' audio-src="audio/ej6.m4a"> 
                                 <audio controls>
                                     <source src="/audio/ej6.m4a" type="audio/mp4">
                                 </audio>
                             </td>
                         </tr>
                         <tr>
-                            <td><audio controls>
+                            <td class='audio' audio-src="audio/ej7.m4a">
+                                <audio controls>
                                     <source src="/audio/ej7.m4a" type="audio/mp4">
                                 </audio>
                             </td>
-                            <td>
+                            <td class='audio' audio-src="audio/ej8.m4a">
                                 <audio controls>
                                     <source src="/audio/ej8.m4a" type="audio/mp4">
                                 </audio>
                             </td>
-                            <td>
+                            <td class='audio' audio-src="audio/ej9.m4a">
                                 <audio controls>
                                     <source src="/audio/ej9.m4a" type="audio/mp4">
                                 </audio>
@@ -182,14 +183,15 @@
                         </tr>
                     </table>
                 </div>
-                <input id="btnCancelarEntrega" type='submit' value="Cancelar"></input>
-                <input id="btnEnviarEntrega" type='submit' value="Enviar"></input>
-
+                <input class="boton btn-entrega" id="btnCancelarEntrega" type='submit' value="Cancelar"></input>
+                <input class="boton btn-entrega" id="btnEnviarEntrega" type='submit' value="Enviar"></input>
+                <div id='enviarTareaError' style="display:none"></div>
             </div>
 
             <div id='pantallaEstudianteTareasEntregadas' style="display:none">
-                <div>ENTREGAS</div>
+                <h2 class="titulo mensaje-entregas">ENTREGAS</h2>
                 <div id='tablaTareasEntregadasEstudiante'></div>
+                <br><br>
                 <div id='tablaEntregasInfo'></div>
             </div>
 
@@ -216,6 +218,19 @@
 
             <div class="" id="pantallaDevolucionesDocente" style="display:none">
                 <div id="tablaDevolucionesPendientes"> </div>
+                <div id="detallesDevolucion" style="display:none"> 
+                    <div id='tareaTituloDevolucion'></div>
+                    <div id='tareaDescripcionDevolucion'></div>
+                    <div id='comentarioAlumnoDevolucion'></div>
+                    <div id='nombreAlumnoDevolucion'></div>
+                    <div id='audioDevolucion'></div>
+                    <label for="comentarioDevolucion">Devolucion</label>
+                <br>
+                <input type="text" id="comentarioDevolucion" placeholder="Ingrese una devolución">
+                <br>
+                <input type="submit" id="btnEnviarDevolucion" value="Enviar">
+                <div id='errorCorreccion' class="mensaje-error"></div>
+                </div>
             </div>
             <!-- Apartado Crear Tareas -->
 

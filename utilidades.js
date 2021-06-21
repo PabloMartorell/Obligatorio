@@ -23,6 +23,14 @@ function ocultarTodasLasPantallas() {
     document.querySelector("#opcionesDocente").style.display = "none";
     document.querySelector("#opcionesAlumno").style.display = "none";
     document.querySelector("#mensajeBienvenida").style.display = "none";
+    document.querySelector("#loginError").style.display = "none";
+    document.querySelector("#pantallaRealizarEntrega").style.display = "none";
+    document.querySelector("#detallesTareaSeleccionada").style.display = "none";
+    document.querySelector("#detallesAlumnoSeleccionado").style.display =
+        "none";
+    document.querySelector(
+        "#pantallaEstudianteTareasEntregadas"
+    ).style.display = "none";
 }
 
 function ocultarTodasLasPantallasDocente() {
@@ -93,7 +101,6 @@ function mostrarImagenPerfilAlumno() {
     let imagenPerfil =
         '<img class="imgPerfil" src="img/estudiante.png" alt="Imagen Perfil" width="200">';
     document.querySelector("#imagenPefril").innerHTML = imagenPerfil;
-    //mostrarPantallaPorId("banner");
 }
 
 function mostrarImagenPerfilDocente() {
@@ -105,23 +112,13 @@ function mostrarImagenPerfilDocente() {
 function volverAlInicio() {
     ocultarTodasLasPantallas();
     mostrarPantallaPorId("contenedorLogin");
+    limpiarValorElementoPorId("usuario");
+    limpiarValorElementoPorId("pass");
 }
 
 function mostrarMensajeBienvendia() {
     let mensaje = `Bienvenido ${usuarioActual.nombre}!`;
     document.querySelector("#mensajeBienvenida").innerHTML = mensaje;
-}
-
-function generarId(valores) {
-    let id = "";
-
-    for (let i = 0; i < valores.length; i++) {
-        if (valores[i] != null && valores[i] != " ") {
-            id += i + valores[i];
-        }
-    }
-
-    return id;
 }
 
 function obtenerDatosDelAlumno(usuarioAlumno) {
@@ -136,4 +133,32 @@ function obtenerDatosDelAlumno(usuarioAlumno) {
     }
 
     return usuarioConDatos;
+}
+
+function obtenerTareaPorId(tareaId) {
+    let tarea = null;
+    let index = 0;
+
+    while (index < tareas.length && tarea == null) {
+        if (tareas[index].id == tareaId) {
+            tarea = tareas[index];
+        }
+        index++;
+    }
+
+    return tarea;
+}
+
+function obtenerDetallesDeEntregaSeleccionada() {
+    let detallesEntrega = null;
+    let index = 0;
+
+    while (index < tareasEntregadas.length && detallesEntrega == null) {
+        if (tareasEntregadas[index].id == entregaIdSeleccionada) {
+            detallesEntrega = tareasEntregadas[index];
+        }
+        index++;
+    }
+
+    return detallesEntrega;
 }

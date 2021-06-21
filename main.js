@@ -2,6 +2,8 @@ inicializar();
 
 agregarEventoAImagenes();
 
+agregarEventoAAudios();
+
 function inicializar() {
     document.querySelector("#btnIngresar").addEventListener("click", login);
     document
@@ -32,10 +34,7 @@ function inicializar() {
 
     document
         .querySelector("#btnBuscarTarea")
-        .addEventListener("click", buscarTarea); //TODO:Probar de si esto se puede poner para el onchange
-    document
-        .querySelector("#tareaABuscar")
-        .addEventListener("keyup", buscarTarea);
+        .addEventListener("click", buscarTarea);
 
     document
         .querySelector("#opcionNuevaTareaDocente")
@@ -72,6 +71,14 @@ function inicializar() {
     document
         .querySelector("#btnCancelarEntrega")
         .addEventListener("click", cancelarEntrega);
+
+    document
+        .querySelector("#btnEnviarEntrega")
+        .addEventListener("click", enviarTarea);
+
+    document
+        .querySelector("#btnEnviarDevolucion")
+        .addEventListener("click", crearDevolucion);
 }
 
 function mostrarPerfilDesplegable() {
@@ -93,5 +100,12 @@ function agregarEventoAImagenes() {
     const imagenesNuevaTarea = document.querySelectorAll(".img");
     for (let i = 0; i < imagenesNuevaTarea.length; i++) {
         imagenesNuevaTarea[i].addEventListener("click", seleccionarImagen);
+    }
+}
+
+function agregarEventoAAudios() {
+    const imagenesNuevaTarea = document.querySelectorAll(".audio");
+    for (let i = 0; i < imagenesNuevaTarea.length; i++) {
+        imagenesNuevaTarea[i].addEventListener("click", seleccionarAudio);
     }
 }

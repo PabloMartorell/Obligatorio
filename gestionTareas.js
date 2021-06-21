@@ -9,12 +9,21 @@ function mostrarTareasPorNivel() {
 }
 
 function obtenerTareasPendientesPorUsuario() {
+    tareasPendientesDelAlumno = [];
     for (let i = 0; i < tareas.length; i++) {
-        if (tareas[i].nivel == usuarioActual.nivel) {
+        let tareaEntregada = false;
+        let index = 0;
+        while (index < tareasEntregadas.length && !tareaEntregada) {
+            if (tareasEntregadas[index].idTarea == tareas[i].id) {
+                tareaEntregada = true;
+            }
+            index++;
+        }
+
+        if (tareas[i].nivel == usuarioActual.nivel && !tareaEntregada) {
             tareasPendientesDelAlumno.push(tareas[i]);
         }
     }
-
     return tareasPendientesDelAlumno;
 }
 
@@ -51,44 +60,24 @@ function agregarEventoADetallesDeTareas() {
 }
 
 function mostrarDetallesDeTareaPendiente() {
-    const tareaId = this.getAttribute("id-tarea");
-    const detallesTarea = obtenerDetallesDeTareaPendiente(tareaId);
+    tareaIdSeleccionada = this.getAttribute("id-tarea");
+    const detallesTarea = obtenerDetallesDeTareaSeleccionada();
 
     mostrarDetallesTareaSeleccionada(detallesTarea);
-    console.log("detallesTaread", detallesTarea);
 }
 
-function obtenerDetallesDeTareaPendiente(tareaId) {
+function obtenerDetallesDeTareaSeleccionada() {
     let detallesTarea = null;
     let index = 0;
 
     while (index < tareasPendientesDelAlumno.length && detallesTarea == null) {
-        if (tareasPendientesDelAlumno[index].id == tareaId) {
+        if (tareasPendientesDelAlumno[index].id == tareaIdSeleccionada) {
             detallesTarea = tareasPendientesDelAlumno[index];
         }
         index++;
     }
 
     return detallesTarea;
-}
-
-function buscarTareas(tareaABuscar) {
-    let tareasBuscadas = [];
-    let index = 0;
-
-    while (index < tareas.length) {
-        const tituloCoincide = tareas[index].titulo === tareaABuscar;
-        const descripcionCoincide = tareas[index].descripcion === tareaABuscar;
-        const tareaPerteneceAlNivel =
-            tareas[index].nivel === usuarioActual.nivel;
-
-        if ((tituloCoincide || descripcionCoincide) && tareaPerteneceAlNivel) {
-            tareasBuscadas.push(tareas[index]);
-        }
-        index++;
-    }
-
-    return tareasBuscadas;
 }
 
 function mostrarTareasARealizar() {
@@ -114,31 +103,20 @@ function buscarTarea() {
 }
 
 function buscarTareaPorTitulo(titulo) {
-    //TODO: buscar solo sobre las tareas que no estan entregadas
     let tareasEncontradas = [];
     let index = 0;
     titulo = titulo.toUpperCase();
 
-    for (let i = 0; i < tareas.length; i++) {
-        const tituloTarea = tareas[i].titulo.toUpperCase();
-        for (let j = 0; j < tituloTarea.length; j++) {
-            if (tituloTarea[j] == titulo) {
-                tareasEncontradas.push(tareas[i]);
-            }
+    while (index < tareas.length) {
+        const tituloCoincide = tareas[index].titulo.toUpperCase() == titulo;
+        const tareaPerteneceAlNivel =
+            tareas[index].nivel == usuarioActual.nivel;
+
+        if (tituloCoincide && tareaPerteneceAlNivel) {
+            tareasEncontradas.push(tareas[index]);
         }
+        index++;
     }
-    console.log("tareasEncontradas", tareasEncontradas);
-
-    // while (index < tareas.length) {
-    //     const tituloCoincide = tareas[index].titulo == titulo;
-    //     const tareaPerteneceAlNivel =
-    //         tareas[index].nivel == usuarioActual.nivel;
-
-    //     if (tituloCoincide && tareaPerteneceAlNivel) {
-    //         tareasEncontradas.push(tareas[index]);
-    //     }
-    //     index++;
-    // }
 
     return tareasEncontradas;
 }
@@ -168,7 +146,7 @@ function regresarAMenuTareas() {
 
 function mostrarDetallesTareaSeleccionada(detalles) {
     const img = `
-    <img src="${detalles.foto}" alt="Imagen de Tarea a realizar" width="250">
+    <img src="${detalles.imagen}" alt="Imagen de Tarea a realizar" width=46%>
     `;
     document.querySelector("#tituloTareaSeleccionada").innerHTML =
         detalles.titulo;
@@ -180,13 +158,8 @@ function mostrarDetallesTareaSeleccionada(detalles) {
     mostrarPantallaPorId("detallesTareaSeleccionada");
 }
 
-function mostrarPantallaEstudianteEntregas() {
-    ocultarPantallaPorId("pantallaTareasEstudiante");
-    mostrarPantallaPorId("pantallaEstudianteTareasEntregadas");
-    mostrarEntregas();
-}
-
 function mostrarPantallaEstudianteTareas() {
+    mostrarTareasARealizar();
     ocultarPantallaPorId("detallesTareaSeleccionada");
     ocultarPantallaPorId("pantallaEstudianteTareasEntregadas");
     ocultarPantallaPorId("pantallaRealizarEntrega");
@@ -194,7 +167,7 @@ function mostrarPantallaEstudianteTareas() {
 }
 
 function seleccionarImagen() {
-    deseleccionarTodasLasImagenes();
+    deseleccionarTodosLosElementosPorClase("img");
 
     const styleImgSeleccionada = `
     border: solid;
@@ -203,13 +176,12 @@ function seleccionarImagen() {
 
     this.style = styleImgSeleccionada;
     crearTareaImgSeleccionada = this.getAttribute("img-src");
-    console.log("crearTareaImgSeleccionada", crearTareaImgSeleccionada);
 }
 
-function deseleccionarTodasLasImagenes() {
-    const imagenes = document.querySelectorAll(".img");
-    for (let i = 0; i < imagenes.length; i++) {
-        imagenes[i].style = "";
+function deseleccionarTodosLosElementosPorClase(clase) {
+    const elementos = document.querySelectorAll(`.${clase}`);
+    for (let i = 0; i < elementos.length; i++) {
+        elementos[i].style = "";
     }
 }
 
@@ -220,28 +192,24 @@ function crearNuevaTarea() {
     const datosValidos = validarDatosNuevaTarea(titulo, descripcion, nivel);
 
     if (datosValidos) {
-        //TODO: hacer que el id incremente en 1
         const tareaCreada = new Tarea(
             titulo,
             nivel,
             descripcion,
-            crearTareaImgSeleccionada,
-            "id1"
+            crearTareaImgSeleccionada
         );
         tareas.push(tareaCreada);
         limpiarDatosCrearTarea();
     } else {
         mostrarCrearTareaError();
     }
-
-    console.log("tareas", tareas);
 }
 
 function limpiarDatosCrearTarea() {
     ocultarPantallaPorId("crearTareaError");
     limpiarValorElementoPorId("tareaTitle");
     limpiarValorElementoPorId("tareaDesc");
-    deseleccionarTodasLasImagenes();
+    deseleccionarTodosLosElementosPorClase("img");
 }
 
 function validarDatosNuevaTarea(titulo, descripcion, nivel) {
@@ -272,12 +240,84 @@ function regresarADetallesTarea() {
     mostrarPantallaEstudianteTareas();
 }
 
-function mostrarPantallaRealizaEntrega() {
-    ocultarPantallaPorId("detallesTareaSeleccionada");
-    ocultarPantallaPorId("pantallaEstudianteTareasEntregadas");
-    mostrarPantallaPorId("pantallaRealizarEntrega");
-}
-
 function cancelarEntrega() {
     regresarADetallesTarea();
+}
+
+function seleccionarAudio() {
+    deseleccionarTodosLosElementosPorClase("audio");
+    const styleAudioSeleccionado = `
+    border: solid;
+    border-color: blue;
+    border-radius: 16px;`;
+
+    this.style = styleAudioSeleccionado;
+    audioSeleccionadoNuevaEntrega = this.getAttribute("audio-src");
+}
+
+function enviarTarea() {
+    const comentario = document.querySelector("#comentariosEntregaTarea").value;
+    const entregaValida = audioSeleccionadoNuevaEntrega.length > 0;
+    if (entregaValida) {
+        const entrega = new Entrega(
+            usuarioActual.nombreUsuario,
+            comentario,
+            audioSeleccionadoNuevaEntrega,
+            false,
+            tareaIdSeleccionada
+        );
+        tareasEntregadas.push(entrega);
+        limpiarDatosEnviarTarea();
+        mostrarPantallaEstudianteEntregas();
+    } else {
+        mostrarErrorEnviarTarea();
+    }
+}
+
+function mostrarErrorEnviarTarea() {
+    mostrarPantallaPorId("enviarTareaError");
+    const error = `<p class="mensaje-error">Por favor, seleccione un audio a enviar.</p>
+    `;
+
+    document.querySelector("#enviarTareaError").innerHTML = error;
+}
+
+function limpiarDatosEnviarTarea() {
+    limpiarValorElementoPorId("comentariosEntregaTarea");
+    deseleccionarTodosLosElementosPorClase("audio");
+}
+
+function crearDevolucion() {
+    const idEntrega = document
+        .querySelector("#tareaInfoEntrega")
+        .getAttribute("devolucion-id");
+    const comentarioDevolucion = document.querySelector(
+        "#comentarioDevolucion"
+    ).value;
+
+    let tareaACorregir = null;
+    let indexTarea = 0;
+    let index = 0;
+
+    while (index < devolucionesPendientes.length && tareaACorregir == null) {
+        if (devolucionesPendientes[index].id == idEntrega) {
+            tareaACorregir = devolucionesPendientes[index];
+            indexTarea = index;
+        }
+    }
+
+    if (tareaACorregir != null) {
+        corregirTarea(tareaACorregir, comentarioDevolucion, indexTarea);
+        ocultarPantallaPorId("detallesDevolucion");
+        mostrarPantallaDevolucionesDocente();
+    } else {
+        document.querySelector("#errorCorreccion").innerHTML =
+            "Un error ocurrio al procesar la correccion.";
+    }
+}
+
+function corregirTarea(tarea, devolucion, index) {
+    tarea.comentarioDevolucion = devolucion;
+    tarea.corregida = true;
+    devolucionesPendientes[index] = tarea;
 }

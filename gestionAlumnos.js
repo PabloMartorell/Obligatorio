@@ -18,3 +18,17 @@ function estadisticasAlumno() {
 
     document.querySelector("#estadisticasAlumno").innerHTML = infoAlumno;
 }
+
+function mostrarPantallaEstudianteEntregas() {
+    ocultarPantallaPorId("pantallaTareasEstudiante");
+    ocultarPantallaPorId("pantallaRealizarEntrega");
+    mostrarPantallaPorId("pantallaEstudianteTareasEntregadas");
+    cargarEntregas();
+}
+
+function mostrarPantallaRealizaEntrega() {
+    ocultarPantallaPorId("detallesTareaSeleccionada");
+    ocultarPantallaPorId("pantallaEstudianteTareasEntregadas");
+    ocultarPantallaPorId("enviarTareaError");
+    mostrarPantallaPorId("pantallaRealizarEntrega");
+}

@@ -54,7 +54,6 @@ function ingresarAlumno() {
     mostrarPantallaPorId("pantallaTareasEstudiante");
     mostrarTareasARealizar();
     mostrarPantallaPorId("pantallaAlumno");
-    //mostrarPantallaPorId("opcionesAlumno");
     mostrarFlexPorId("opcionesAlumno");
 }
 

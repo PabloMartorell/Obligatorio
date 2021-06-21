@@ -9,7 +9,7 @@ function precargarUsuarios() {
     crearAlumnos();
     crearTareas();
     crearEntregas();
-    console.log("usuarios", usuarios); //BORRAR ESTO ANTES DE LA ENTREGA
+    console.log("usuarios", usuarios);
     console.log("tareas ", tareas);
     console.log("tareasEntregadas ", tareasEntregadas);
 }
@@ -92,25 +92,23 @@ function crearAlumno(
 }
 
 function crearTareas() {
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 9; i++) {
         let nivel = NIVEL_INICIAL;
         const titulo = "Tarea Prueba " + i;
         const descripcion = "Esta es la descripción de la Tarea Prueba " + i;
-        const foto = "";
+        const imagen = `img/ej${i}.png`;
 
         if (i >= 4 && i <= 6) {
             nivel = NIVEL_INTERMEDIO;
         } else if (i > 6) {
             nivel = NIVEL_AVANZADO;
         }
-        const datosId = titulo + nivel;
-        const id = generarId(datosId);
-        crearTarea(titulo, nivel, descripcion, foto, id);
+        crearTarea(titulo, nivel, descripcion, imagen);
     }
 }
 
-function crearTarea(titulo, nivel, descripcion, foto, id) {
-    const tarea = new Tarea(titulo, nivel, descripcion, foto, id);
+function crearTarea(titulo, nivel, descripcion, imagen) {
+    const tarea = new Tarea(titulo, nivel, descripcion, imagen);
     tareas.push(tarea);
 }
 
@@ -121,7 +119,6 @@ function crearEntregas() {
             for (let j = 1; j <= 3; j++) {
                 if (usuario.nivel == tareas[j].nivel) {
                     const nombreUsuario = usuario.nombreUsuario;
-                    const tarea = tareas[j];
                     const comentario = "Esta entrega es una prueba";
                     const audio = `ej${j}.m4a`;
                     const corregida = true;
@@ -129,7 +126,6 @@ function crearEntregas() {
 
                     crearEntrega(
                         nombreUsuario,
-                        tarea,
                         comentario,
                         audio,
                         corregida,
@@ -141,17 +137,9 @@ function crearEntregas() {
     }
 }
 
-function crearEntrega(
-    nombreUsuario,
-    tarea,
-    comentario,
-    audio,
-    corregida,
-    idTarea
-) {
+function crearEntrega(nombreUsuario, comentario, audio, corregida, idTarea) {
     const entrega = new Entrega(
         nombreUsuario,
-        tarea,
         comentario,
         audio,
         corregida,
