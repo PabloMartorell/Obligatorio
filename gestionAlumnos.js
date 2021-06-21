@@ -1,7 +1,8 @@
 /* Mostrar estadisticas del alumno seleccionado en apartado estadisticas/docente */
 function estadisticasAlumno() {
-    let alumnoSeleccionado = document.querySelector("#alumnoSeleccionado").value;
-    
+    let alumnoSeleccionado = document.querySelector(
+        "#alumnoSeleccionado"
+    ).value;
 
     let infoAlumno = `
                 
@@ -18,37 +19,16 @@ function estadisticasAlumno() {
     document.querySelector("#estadisticasAlumno").innerHTML = infoAlumno;
 }
 
-
-/* Listado alumnos para en el apartado de alumnos/docente */
-
-function mostrarAlumnos() {
-
-    let listadoAlumnos = `
-        <table>
-            <tr>
-                <th>Alumnos</th>
-                
-            </tr>`;
-
-    for (let i = 0; i < alumnos.length; i++) {
-
-        listadoAlumnos += ` <tr id="filaNombresEstudiantes" >
-            <td>${alumnos[i].nombre}</td>
-            <tr>
-        `;
-
-    }
-
-    listadoAlumnos += ` </table> `;
-    console.log("listado alñumno: "+listadoAlumnos);
-
-    document.querySelector("#listadoAlumnos").innerHTML = listadoAlumnos;
-
-    /* return listadoAlumnos */
-
-    
-
+function mostrarPantallaEstudianteEntregas() {
+    ocultarPantallaPorId("pantallaTareasEstudiante");
+    ocultarPantallaPorId("pantallaRealizarEntrega");
+    mostrarPantallaPorId("pantallaEstudianteTareasEntregadas");
+    cargarEntregas();
 }
 
-
-
+function mostrarPantallaRealizaEntrega() {
+    ocultarPantallaPorId("detallesTareaSeleccionada");
+    ocultarPantallaPorId("pantallaEstudianteTareasEntregadas");
+    ocultarPantallaPorId("enviarTareaError");
+    mostrarPantallaPorId("pantallaRealizarEntrega");
+}

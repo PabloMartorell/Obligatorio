@@ -10,6 +10,10 @@ function mostrarFlexPorId(idPantalla) {
     document.querySelector(`#${idPantalla}`).style.display = "flex";
 }
 
+function limpiarValorElementoPorId(idElemento) {
+    document.querySelector(`#${idElemento}`).value = "";
+}
+
 function ocultarTodasLasPantallas() {
     document.querySelector("#contenedorLogin").style.display = "none";
     document.querySelector("#pantallaAlumno").style.display = "none";
@@ -19,6 +23,14 @@ function ocultarTodasLasPantallas() {
     document.querySelector("#opcionesDocente").style.display = "none";
     document.querySelector("#opcionesAlumno").style.display = "none";
     document.querySelector("#mensajeBienvenida").style.display = "none";
+    document.querySelector("#loginError").style.display = "none";
+    document.querySelector("#pantallaRealizarEntrega").style.display = "none";
+    document.querySelector("#detallesTareaSeleccionada").style.display = "none";
+    document.querySelector("#detallesAlumnoSeleccionado").style.display =
+        "none";
+    document.querySelector(
+        "#pantallaEstudianteTareasEntregadas"
+    ).style.display = "none";
 }
 
 function ocultarTodasLasPantallasDocente() {
@@ -89,7 +101,6 @@ function mostrarImagenPerfilAlumno() {
     let imagenPerfil =
         '<img class="imgPerfil" src="img/estudiante.png" alt="Imagen Perfil" width="200">';
     document.querySelector("#imagenPefril").innerHTML = imagenPerfil;
-    //mostrarPantallaPorId("banner");
 }
 
 function mostrarImagenPerfilDocente() {
@@ -101,6 +112,8 @@ function mostrarImagenPerfilDocente() {
 function volverAlInicio() {
     ocultarTodasLasPantallas();
     mostrarPantallaPorId("contenedorLogin");
+    limpiarValorElementoPorId("usuario");
+    limpiarValorElementoPorId("pass");
 }
 
 function mostrarMensajeBienvendia() {
@@ -108,14 +121,44 @@ function mostrarMensajeBienvendia() {
     document.querySelector("#mensajeBienvenida").innerHTML = mensaje;
 }
 
-function generarId(valores) {
-    let id = "";
+function obtenerDatosDelAlumno(usuarioAlumno) {
+    let usuarioConDatos = null;
+    let index = 0;
 
-    for (let i = 0; i < valores.length; i++) {
-        if (valores[i] != null && valores[i] != " ") {
-            id += i + valores[i];
+    while (index < alumnosDelDocenteActual.length && usuarioConDatos == null) {
+        if (alumnosDelDocenteActual[index].nombreUsuario == usuarioAlumno) {
+            usuarioConDatos = alumnosDelDocenteActual[index];
         }
+        index++;
     }
 
-    return id;
+    return usuarioConDatos;
+}
+
+function obtenerTareaPorId(tareaId) {
+    let tarea = null;
+    let index = 0;
+
+    while (index < tareas.length && tarea == null) {
+        if (tareas[index].id == tareaId) {
+            tarea = tareas[index];
+        }
+        index++;
+    }
+
+    return tarea;
+}
+
+function obtenerDetallesDeEntregaSeleccionada() {
+    let detallesEntrega = null;
+    let index = 0;
+
+    while (index < tareasEntregadas.length && detallesEntrega == null) {
+        if (tareasEntregadas[index].id == entregaIdSeleccionada) {
+            detallesEntrega = tareasEntregadas[index];
+        }
+        index++;
+    }
+
+    return detallesEntrega;
 }

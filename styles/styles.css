@@ -236,7 +236,9 @@ tr:hover {
     font-weight: normal;
 }
 
-.mensaje-tareas-realizar {
+.mensaje-tareas-realizar,
+.mensaje-entregas,
+.titulo-tarea {
     text-transform: uppercase;
     font-weight: 500;
     font-size: 20px;
@@ -247,4 +249,72 @@ tr:hover {
     margin-left: 10px;
     box-shadow: 0px 0px 6px 1px hsl(219deg 98% 48% / 36%);
     background: #c5e6f1;
+}
+
+.btn-detalles-alumno,
+.btn-detalles-tarea,
+.btn-detalles-entrega-pendiente {
+    color: blue;
+    font-family: Poppins-Bold, sans-serif;
+    text-align: center;
+}
+
+.btn-detalles-alumno:hover,
+.btn-detalles-tarea:hover,
+.btn-detalles-entrega-pendiente:hover {
+    color: hsl(225deg 77% 49%);
+    cursor: pointer;
+    text-decoration-line: underline;
+}
+
+.audio {
+    padding: 20px;
+}
+
+.audio:hover {
+    cursor: pointer;
+    border: solid blue;
+}
+
+.no-hay-entregas {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 12vh;
+    text-align: center;
+}
+
+.entrega-descripcion {
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 16px;
+}
+
+.btn-entrega {
+    width: 19%;
+    border: solid;
+    border-width: 1px;
+    border-color: hsl(195deg 30% 78%);
+    margin: 10px;
+}
+
+.text-area {
+    border-radius: 9px;
+    background: hsl(0deg 0% 100% / 0%);
+    width: 80%;
+}
+
+.label {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.seleccionar-audio {
+    font-family: Poppins-Bold, sans-serif;
+    font-size: 20px;
+    color: hsl(0deg 1% 26%);
+    line-height: 1.2;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }

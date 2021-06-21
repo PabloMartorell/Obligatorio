@@ -1,6 +1,6 @@
-function mostrarEntregas() {
+function cargarEntregas() {
     const entregasDelUsuario = obtenerEntregasDeUsuarioActual();
-    let tabla = "Usted no tiene entregas para visualizar";
+    let tabla = `<p class="no-hay-entregas">Usted no tiene entregas para visualizar</p>`;
     if (entregasDelUsuario.length) {
         tabla = generarTablaDeEntregasEstudiante(entregasDelUsuario);
         mostrarInformacionDeEntregas(entregasDelUsuario);
@@ -15,8 +15,9 @@ function generarTablaDeEntregasEstudiante(entregas) {
     <tr>
         <th>Tarea</th>
         <th>Descripción</th>
+        <th>Comentarios Del Estudiante</th>
         <th>Estado</th>
-        <th>Comentarios</th>
+        <th>Devolucion</th>
     </tr>`;
     for (i = 0; i < entregas.length; i++) {
         let estado = "Pendiente";
@@ -26,8 +27,9 @@ function generarTablaDeEntregasEstudiante(entregas) {
         tablaEntregas += `<tr>
                 <td>${entregas[i].tarea.titulo}</td>
                 <td>${entregas[i].tarea.descripcion}</td>
-                <td>${estado}</td>
                 <td>${entregas[i].comentario}</td>
+                <td>${estado}</td>
+                <td>${entregas[i].comentarioDevolucion}</td>
             </tr>`;
     }
 
@@ -38,21 +40,18 @@ function generarTablaDeEntregasEstudiante(entregas) {
 
 function obtenerEntregasDeUsuarioActual() {
     const entregasDelUsuario = [];
-    console.log("usuarioActual ", usuarioActual);
 
     for (i = 0; i < tareasEntregadas.length; i++) {
         if (tareasEntregadas[i].nombreUsuario == usuarioActual.nombreUsuario) {
             entregasDelUsuario.push(tareasEntregadas[i]);
         }
     }
-    console.log("entregasDelUsuario ", entregasDelUsuario);
     return entregasDelUsuario;
 }
 
 function mostrarInformacionDeEntregas(entregas) {
     const tablaInfo = generarTabablaInfoEntregasEstudiante(entregas);
     document.querySelector("#tablaEntregasInfo").innerHTML = tablaInfo;
-    //TODO: mostrar una tabla con la info de las entregas
 }
 
 function generarTabablaInfoEntregasEstudiante(entregas) {

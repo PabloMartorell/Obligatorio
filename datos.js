@@ -7,9 +7,16 @@ const NIVEL_AVANZADO = "avanzado";
 
 let usuarioActual = {};
 
-const alumnosDelDocenteActual = [];
+let alumnosDelDocenteActual = [];
+
+let crearTareaImgSeleccionada = "";
 let docentes = [];
 let alumnos = [];
 let usuarios = [];
 let tareas = [];
 let tareasEntregadas = [];
+let tareasPendientesDelAlumno = [];
+let tareaIdSeleccionada = "";
+let audioSeleccionadoNuevaEntrega = "";
+let devolucionesPendientes = [];
+let entregaIdSeleccionada = "";
