@@ -31,7 +31,7 @@
                 <br>
                 <input id="nombreRegistro" type="text" class="login-input" placeholder="Nombre">
                 <br>
-                <input id="usuarioRegistro" type="text" class="login-input" placeholder="Ususario">
+                <input id="usuarioRegistro" type="text" class="login-input" placeholder="Usuario">
                 <br>
                 <input id="contraseñaRegistro" type="text" class="login-input" placeholder="Contraseña">
                 <br>
@@ -211,19 +211,19 @@
                     <div id='errorCorreccion' class="mensaje-error"></div>
                 </div>
             </div>
-            <div class="" id="pantallaCrearTareaDocente" style="display:none">
-                <h1>Nueva Tarea</h1>
+            <div id="pantallaCrearTareaDocente" style="display:none; margin: 16px;">
+                <h1 class="titulo-nueva-tarea">Nueva Tarea</h1>
                 <br>
-                <label for="tareaTitle">TITULO</label>
+                <label for="tareaTitle" class="titulo-tarea">TITULO</label>
                 <br>
-                <input type="text" id="tareaTitle" placeholder="Ingrese el Título">
+                <input class="titulo-tarea-input" type="text" id="tareaTitle" placeholder="Ingrese el Título">
                 <br>
                 <label for="tareaDesc">DESCRIPCION</label>
                 <br>
-                <textarea id="tareaDesc" placeholder="Ingrese la descripción"></textarea>
+                <textarea id="tareaDesc" class="descripcion-tarea-input" placeholder="Ingrese la descripción"></textarea>
                 <br>
                 <div>
-                    <select id="tareaLevel">
+                    <select class="select-nivel" id="tareaLevel">
                         <option value="inicial">INICIAL</option>
                         <option value="interermedio">INTERMEDIO</option>
                         <option value="avanzado">AVANZADO</option>
@@ -231,36 +231,39 @@
                 </div>
                 <br>
                 <div>
-                    <h2>Seleccione una Imagen:</h2>
+                    <h2 class="titulo-seleccionar-imagen">Seleccione una Imagen:</h2>
                     <table>
                         <tr>
-                            <th class='img' img-src="img/ej1.png"><img src="img/ej1.png" alt="Composición" width="250">
+                            <th class='imagen' img-src="img/ej1.png"><img src="img/ej1.png" alt="Composición" width="250">
                             </th>
-                            <th class='img' img-src="img/ej2.png"><img src="img/ej2.png" alt="Composición" width="250">
+                            <th class='imagen' img-src="img/ej2.png"><img src="img/ej2.png" alt="Composición" width="250">
                             </th>
-                            <th class='img' img-src="img/ej3.png"><img src="img/ej3.png" alt="The Caterpillar"
+                            <th class='imagen' img-src="img/ej3.png"><img src="img/ej3.png" alt="The Caterpillar"
                                     width="250"></th>
                         </tr>
                         <tr>
-                            <td class='img' img-src="img/ej4.png"><img src="img/ej4.png" alt="Composición" width="250">
+                            <td class='imagen' img-src="img/ej4.png"><img src="img/ej4.png" alt="Composición" width="250">
                             </td>
-                            <td class='img' img-src="img/ej5.png"><img src="img/ej5.png" alt="Composición" width="250">
+                            <td class='imagen' img-src="img/ej5.png"><img src="img/ej5.png" alt="Composición" width="250">
                             </td>
-                            <td class='img' img-src="img/ej6.png"><img src="img/ej6.png" alt="Yankee Doodle"
+                            <td class='imagen' img-src="img/ej6.png"><img src="img/ej6.png" alt="Yankee Doodle"
                                     width="250"></td>
                         </tr>
                         <tr>
-                            <td class='img' img-src="img/ej7.png"><img src="img/ej7.png" alt="Old Mcdonald had a farm"
+                            <td class='imagen' img-src="img/ej7.png"><img src="img/ej7.png" alt="Old Mcdonald had a farm"
                                     width="250"></td>
-                            <td class='img' img-src="img/ej8.png"><img src="img/ej8.png" alt="La marcha de los santos"
+                            <td class='imagen' img-src="img/ej8.png"><img src="img/ej8.png" alt="La marcha de los santos"
                                     width="250"></td>
-                            <td class='img' img-src="img/ej9.png"><img src="img/ej9.png" alt="Everybody Hurts"
+                            <td class='imagen' img-src="img/ej9.png"><img src="img/ej9.png" alt="Everybody Hurts"
                                     width="250"></td>
                         </tr>
                     </table>
                 </div>
                 <br>
-                <input type="submit" id="btnCrearTarea" value="Crear Tarea"></input>
+                <div style="text-align: center;">
+                    <input class="boton btn-crear-tarea" type="submit" id="btnCrearTarea" value="Crear Tarea"></input>
+                </div>
+                
                 <div id='crearTareaError' style="display:none"></div>
             </div>
             <br>

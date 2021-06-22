@@ -60,6 +60,10 @@
     cursor: pointer;
     text-transform: uppercase;
     background: hsl(238deg 4% 71% / 10%);
+
+    border: solid;
+    border-width: 1px;
+    border-color: hsl(195deg 30% 78%);
 }
 
 .boton:hover,
@@ -238,7 +242,8 @@ tr:hover {
 
 .mensaje-tareas-realizar,
 .mensaje-entregas,
-.titulo-tarea {
+.titulo-tarea,
+.titulo-seleccionar-imagen {
     text-transform: uppercase;
     font-weight: 500;
     font-size: 20px;
@@ -271,7 +276,8 @@ tr:hover {
     padding: 20px;
 }
 
-.audio:hover {
+.audio:hover,
+.imagen:hover {
     cursor: pointer;
     border: solid blue;
 }
@@ -317,4 +323,62 @@ tr:hover {
     line-height: 1.2;
     margin-top: 16px;
     margin-bottom: 16px;
+}
+
+.titulo-nueva-tarea,
+.titulo-seleccionar-imagen {
+    font-family: Poppins-Bold, sans-serif;
+    color: hsl(0deg 1% 26%);
+    line-height: 1.2;
+}
+
+.titulo-tarea-input {
+    font-family: Poppins-Bold, sans-serif;
+    font-size: 14px;
+    border-radius: 6px;
+    width: 44%;
+    padding: 10px;
+    border-top: unset;
+    border-color: hsl(0deg 0% 100%);
+    box-shadow: inset -1px -1px 3px 1px hsl(0deg 0% 0% / 39%);
+    border-left: unset;
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+.descripcion-tarea-input {
+    border-radius: 6px;
+    border-top-width: unset;
+    border-top-style: unset;
+    border-top-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 39%) -1px -1px 3px 1px inset;
+    border-left: unset;
+    font-family: Poppins-Bold, sans-serif;
+    font-size: 14px;
+    height: 37px;
+    width: 399px;
+    padding: 10px;
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+.select-nivel {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 7px;
+    text-align-last: center;
+    background: hsl(0deg 0% 100% / 0%);
+    font-size: 15px;
+    border-top: unset;
+    border-color: hsl(0deg 0% 100%);
+    box-shadow: inset -1px -1px 3px 1px hsl(0deg 0% 0% / 39%);
+    border-left: unset;
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+.btn-crear-tarea {
+    width: 23%;
 }

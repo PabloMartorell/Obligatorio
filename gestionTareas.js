@@ -321,6 +321,7 @@ function crearDevolucion() {
     if (tareaACorregir != null) {
         corregirTarea(tareaACorregir, comentarioDevolucion, indexTarea);
         ocultarPantallaPorId("detallesDevolucion");
+        limpiarValorElementoPorId("comentarioDevolucion");
         mostrarPantallaDevolucionesDocente();
     } else {
         document.querySelector("#errorCorreccion").innerHTML =

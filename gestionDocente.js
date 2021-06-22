@@ -133,7 +133,7 @@ function generarTablaDeAlumnosConMasEntregas(alumnosConMasEntregas) {
 function mostrarDevolucionesPendientes() {
     obtenerDevolucionesPendientes();
     
-    let resultado = "Ningún alumno ha realiado una entrega.";
+    let resultado = `<p class="no-hay-entregas">Ningún alumno ha realiado una entrega.</p>`;
 
     if (devolucionesPendientes.length > 0) {
         resultado = generarTablaDeDevolucionesPendientes();
