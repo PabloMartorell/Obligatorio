@@ -86,36 +86,44 @@ function mostrarTareasARealizar() {
 
 function buscarTarea() {
     const tareaABuscar = document.querySelector("#tareaABuscar").value;
-    let tareasBuscadas = buscarTareaPorTitulo(tareaABuscar);
-
-    if (!tareasBuscadas.length) {
-        tareasBuscadas = buscarTareaPorDescripcion(tareaABuscar);
-    }
-
+    let tareasBuscadas = [];
     let tablaConTareas =
         "Ninguna tarea fue encontrada con los datos ingresados";
+
+    if (!tareaABuscar.length) {
+        tareasBuscadas = tareasPendientesDelAlumno;
+    } else {
+        tareasBuscadas = buscarTareaPorTitulo(tareaABuscar);
+
+        if (!tareasBuscadas.length) {
+            console.log("dentro de buscar por descripcion");
+            tareasBuscadas = buscarTareaPorDescripcion(tareaABuscar);
+        }
+    }
 
     if (tareasBuscadas.length) {
         tablaConTareas = generarTablaDeTareas(tareasBuscadas);
     }
-
     document.querySelector("#tablaTareasEstudiante").innerHTML = tablaConTareas;
 }
 
 function buscarTareaPorTitulo(titulo) {
     let tareasEncontradas = [];
-    let index = 0;
+
     titulo = titulo.toUpperCase();
 
-    while (index < tareas.length) {
-        const tituloCoincide = tareas[index].titulo.toUpperCase() == titulo;
+    for (let i = 0; i < tareasPendientesDelAlumno.length; i++) {
         const tareaPerteneceAlNivel =
-            tareas[index].nivel == usuarioActual.nivel;
+            tareasPendientesDelAlumno[i].nivel == usuarioActual.nivel;
 
-        if (tituloCoincide && tareaPerteneceAlNivel) {
-            tareasEncontradas.push(tareas[index]);
+        if (tareaPerteneceAlNivel) {
+            const tituloDeTarea =
+                tareasPendientesDelAlumno[i].titulo.toUpperCase();
+
+            if (tituloDeTarea.indexOf(titulo) > -1) {
+                tareasEncontradas.push(tareasPendientesDelAlumno[i]);
+            }
         }
-        index++;
     }
 
     return tareasEncontradas;
@@ -123,17 +131,21 @@ function buscarTareaPorTitulo(titulo) {
 
 function buscarTareaPorDescripcion(descripcion) {
     let tareasEncontradas = [];
-    let index = 0;
 
-    while (index < tareas.length) {
-        const descripcionCoincide = tareas[index].descripcion == descripcion;
+    descripcion = descripcion.toUpperCase();
+
+    for (let i = 0; i < tareasPendientesDelAlumno.length; i++) {
         const tareaPerteneceAlNivel =
-            tareas[index].nivel == usuarioActual.nivel;
+            tareasPendientesDelAlumno[i].nivel == usuarioActual.nivel;
 
-        if (descripcionCoincide && tareaPerteneceAlNivel) {
-            tareasEncontradas.push(tareas[index]);
+        if (tareaPerteneceAlNivel) {
+            const descripcionDeTarea =
+                tareasPendientesDelAlumno[i].descripcion.toUpperCase();
+
+            if (descripcionDeTarea.indexOf(descripcion) > -1) {
+                tareasEncontradas.push(tareasPendientesDelAlumno[i]);
+            }
         }
-        index++;
     }
 
     return tareasEncontradas;

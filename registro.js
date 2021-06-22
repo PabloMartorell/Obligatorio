@@ -5,6 +5,8 @@ function mostrarPantallaRegistro() {
 
 function cancelarRegistro() {
     volverAlInicio();
+    limpiarValoresDeRegisto();
+    ocultarPantallaPorId("registroError");
 }
 
 function mostrarInfoExtraPorTipoDeUsuario() {
@@ -51,11 +53,17 @@ function crearRegistro() {
         } else if (perfil == PERFIL_DOCENTE) {
             crearDocente(nombre, nombreUsuario, contraseña, perfil);
         }
-
-        ingresarUsuarioPorPerfil(perfil);
+        volverAlInicio();
+        limpiarValoresDeRegisto();
     } else {
         mostrarMensajeErrorRegistro(nombreUsuario, contraseña);
     }
+}
+
+function limpiarValoresDeRegisto() {
+    limpiarValorElementoPorId("nombreRegistro");
+    limpiarValorElementoPorId("usuarioRegistro");
+    limpiarValorElementoPorId("contraseñaRegistro");
 }
 
 function mostrarMensajeErrorRegistro(nombreUsuario, contraseña) {

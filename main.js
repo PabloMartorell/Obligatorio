@@ -37,6 +37,10 @@ function inicializar() {
         .addEventListener("click", buscarTarea);
 
     document
+        .querySelector("#tareaABuscar")
+        .addEventListener("keyup", buscarTarea);
+
+    document
         .querySelector("#opcionNuevaTareaDocente")
         .addEventListener("click", mostrarPantallaCrearTarea);
 
