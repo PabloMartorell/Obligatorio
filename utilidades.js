@@ -41,6 +41,8 @@ function ocultarTodasLasPantallasDocente() {
     document.querySelector("#pantallaDevolucionesDocente").style.display =
         "none";
     document.querySelector("#pantallaCrearTareaDocente").style.display = "none";
+    document.querySelector("#detallesAlumnoSeleccionado").style.display =
+        "none";
 }
 
 function verificarDatosDeUsuario(nombreUsuario, contraseña) {
