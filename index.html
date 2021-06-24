@@ -185,11 +185,13 @@
         <div id="pantallaDocente" style="display:none">
             <div class="" id="pantallaInfoAlumnosDocente" style="display:none">
                 <div id="tablaAlumnosDelDocente"> </div>
-                <div id="detallesAlumnoSeleccionado" style="display:none">
+                <div id="detallesAlumnoSeleccionado" class="info-alumno-container" style="display:none">
                 </div> <br><br>
-                <div id="seleccionarNuevoNivel" style="display:none"></div><br>
-                <input id="btnGuardarNuevoNivelAlumno" type='submit' value="Guardar Cambios"
-                    style="display:none"></input>
+                <div class="seleccionar-nivel">
+                    <div class="nuevo-nivel" id="seleccionarNuevoNivel" style="display:none"></div><br>
+                    <input class="boton" id="btnGuardarNuevoNivelAlumno" type='submit' value="Guardar Cambios"
+                        style="display:none; margin-left: 11%;"></input>
+                </div>
             </div>
             <div class="" id="pantallaEstadisticasDocente" style="display:none">
                 <div id="totalEjerciciosEntregados"> </div>
@@ -197,20 +199,24 @@
             </div>
             <div class="" id="pantallaDevolucionesDocente" style="display:none">
                 <div id="tablaDevolucionesPendientes"> </div>
-                <div id="detallesDevolucion" style="display:none">
-                    <div id='tareaTituloDevolucion'></div>
-                    <div id='tareaDescripcionDevolucion'></div>
-                    <div id='comentarioAlumnoDevolucion'></div>
-                    <div id='nombreAlumnoDevolucion'></div>
-                    <div id='audioDevolucion'></div>
-                    <label for="comentarioDevolucion">Devolucion</label>
-                    <br>
-                    <input type="text" id="comentarioDevolucion" placeholder="Ingrese una devolución">
-                    <br>
-                    <input type="submit" id="btnEnviarDevolucion" value="Enviar">
+                <div id="detallesDevolucion" style="display:none; margin: 4vh;">
+                    <div class="contenedor-entrega">
+                        <div class="titulo-devolucion" id='tareaTituloDevolucion'></div><br>
+                        <div class="descripcion-devolucion" id='tareaDescripcionDevolucion'></div><br>
+                        <div class="usuario-devolucion" id='nombreAlumnoDevolucion'></div><br>
+                        <div class="titulo-audio-entregado">El audio seleccionado para la entrega es: </div>
+                        <div id='audioDevolucion'></div><br>
+                        <div class="comentario-devolucion" id='comentarioDelAlumno'></div><br>
+                    </div>
+                    <div class="contenedor-evaluacion">
+                        <input class="entrega-input" type="text" id="comentarioDevolucion" placeholder="Ingrese una devolución">
+                        <br><br>
+                        <input class="boton" type="submit" id="btnEnviarDevolucion" value="Enviar">
+                    </div>
                     <div id='errorCorreccion' class="mensaje-error"></div>
                 </div>
             </div>
+            <br><br><br>
             <div id="pantallaCrearTareaDocente" style="display:none; margin: 16px;">
                 <h1 class="titulo-nueva-tarea">Nueva Tarea</h1>
                 <br>

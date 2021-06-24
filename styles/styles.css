@@ -304,12 +304,6 @@ tr:hover {
     margin: 10px;
 }
 
-.text-area {
-    border-radius: 9px;
-    background: hsl(0deg 0% 100% / 0%);
-    width: 80%;
-}
-
 .label {
     text-transform: uppercase;
     font-weight: 500;
@@ -336,7 +330,7 @@ tr:hover {
     font-family: Poppins-Bold, sans-serif;
     font-size: 14px;
     border-radius: 6px;
-    width: 44%;
+    width: 29%;
     padding: 10px;
     border-top: unset;
     border-color: hsl(0deg 0% 100%);
@@ -344,9 +338,11 @@ tr:hover {
     border-left: unset;
     margin-bottom: 16px;
     margin-top: 16px;
+    outline: none;
 }
 
-.descripcion-tarea-input {
+.descripcion-tarea-input,
+.text-area {
     border-radius: 6px;
     border-top-width: unset;
     border-top-style: unset;
@@ -362,6 +358,7 @@ tr:hover {
     padding: 10px;
     margin-bottom: 16px;
     margin-top: 16px;
+    outline: none;
 }
 
 .select-nivel {
@@ -377,8 +374,99 @@ tr:hover {
     border-left: unset;
     margin-bottom: 16px;
     margin-top: 16px;
+    outline: none;
 }
 
 .btn-crear-tarea {
     width: 23%;
+}
+
+.info-alumno {
+    font-family: Poppins-Bold, sans-serif;
+    color: hsl(0deg 0% 0%);
+    line-height: 1.2;
+}
+
+.btn-actualizar-nivel {
+    margin-left: 20%;
+}
+
+.info-alumno-container {
+    border: solid;
+    border-width: 1px;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 3vh;
+    width: 29%;
+    position: relative;
+    left: 30%;
+}
+
+.titulo-devolucion,
+.descripcion-devolucion,
+.usuario-devolucion,
+.comentario-devolucion,
+.titulo-audio-entregado {
+    font-family: Poppins-Bold, sans-serif;
+    font-size: 18px;
+    color: hsl(180deg 1% 15%);
+    margin-bottom: 16px;
+}
+
+.contenedor-entrega {
+    border: solid;
+    padding: 16px;
+    border-width: 2px;
+    border-radius: 17px;
+    width: 31%;
+    margin-left: 34%;
+    border-color: hsl(188deg 34% 62%);
+}
+
+.contenedor-evaluacion {
+    padding: 16px;
+    text-align: center;
+    width: 31%;
+    margin-left: 34%;
+}
+
+.entrega-input {
+    border-radius: 18px;
+    padding: 16px;
+    border: unset;
+    background: hsl(0deg 0% 100% / 0%);
+    text-align: center;
+    font-size: 15px;
+    box-shadow: 1px 2px 2px 0px hsl(219deg 54% 64% / 69%);
+    outline: none;
+    width: 88%;
+}
+
+.seleccionar-nivel {
+    padding: 16px;
+    margin: 3vh;
+    width: 29%;
+    position: relative;
+    left: 30%;
+}
+
+.nuevo-nivel {
+    display: block;
+    margin-left: 11%;
+    font-family: Poppins-Bold, sans-serif;
+    font-size: 18px;
+    color: hsl(180deg 1% 15%);
+    margin-bottom: 16px;
+}
+
+.nuevo-nivel-select {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 7px;
+    background: hsl(0deg 0% 100% / 0%);
+    font-size: 15px;
+    border-color: hsl(0deg 0% 100%);
+    box-shadow: inset -1px -1px 3px 1px hsl(0deg 0% 0% / 39%);
+    outline: none;
+    margin-left: 20px;
 }

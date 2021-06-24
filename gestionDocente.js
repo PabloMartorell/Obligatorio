@@ -210,17 +210,25 @@ function mostrarDetallesDeEntregaPendiente() {
 }
 
 function mostrarDetallesEntregaPendiente(detallesEntrega) {
+    const tituloTarea = `Tarea: ${detallesEntrega.tarea.titulo}`;
     const tareaInfo = `<p id="tareaInfoEntrega" devolucion-id="${detallesEntrega.id}"> Descripción: ${detallesEntrega.tarea.descripcion} </p>`;
-    document.querySelector("#tareaTituloDevolucion").innerHTML = detallesEntrega.tarea.titulo
-    document.querySelector("#tareaDescripcionDevolucion").innerHTML = tareaInfo
-    document.querySelector("#nombreAlumnoDevolucion").innerHTML = detallesEntrega.nombreUsuario;
-    
+    const alumno = `Entregado por usuario: ${detallesEntrega.nombreUsuario}`;
     const audioEntrega = `
     <audio controls>
         <source src="${detallesEntrega.audio}" type="audio/mp4">
     </audio>
     `;
+
+    let comentarioDelAlumno = '';
     
+    if(detallesEntrega.comentario){
+        comentarioDelAlumno = `Comentario del alumno: ${detallesEntrega.comentario}`;
+    }
+
+    document.querySelector("#tareaTituloDevolucion").innerHTML = tituloTarea;
+    document.querySelector("#tareaDescripcionDevolucion").innerHTML = tareaInfo
+    document.querySelector("#nombreAlumnoDevolucion").innerHTML = alumno;
+    document.querySelector("#comentarioDelAlumno").innerHTML = comentarioDelAlumno;
     document.querySelector("#audioDevolucion").innerHTML = audioEntrega;
 
     mostrarPantallaPorId('detallesDevolucion');
@@ -244,13 +252,13 @@ function mostrarDetallesDelAlumno() {
             "Se produjo un error al obtener los datos del usuario. Por favor, contacte un administrador.";
     } else {
         resultado += `
-        <p id="usuarioSeleccionado" nombre-usuario="${datosDelAlumno.nombreUsuario}">Nombre: ${datosDelAlumno.nombre}</p>
-        <p id="nivelActualAlumno" nivel-actual="${datosDelAlumno.nivel}" >Nivel Actual: ${datosDelAlumno.nivel}</p>
+        <p id="usuarioSeleccionado" class="info-alumno" nombre-usuario="${datosDelAlumno.nombreUsuario}">Nombre: ${datosDelAlumno.nombre}</p>
+        <p id="nivelActualAlumno" class="info-alumno" nivel-actual="${datosDelAlumno.nivel}" >Nivel Actual: ${datosDelAlumno.nivel}</p>
 
         `;
 
         if (datosDelAlumno.nivel != NIVEL_AVANZADO) {
-            resultado += `<input id="btnNuevoNivelAlumno" type='submit' value="Actualizar Nivel"></input>`;
+            resultado += `<input id="btnNuevoNivelAlumno" class="boton btn-actualizar-nivel" type='submit' value="Actualizar Nivel"></input>`;
         }
     }
     mostrarPantallaPorId('detallesAlumnoSeleccionado');
@@ -266,7 +274,7 @@ function mostrarNuevosNivelesParaAlumno() {
         .getAttribute("nivel-actual");
     let resultado = `
     <label for="nivelAlumno">Nuevo Nivel</label>
-    <select id="nivelAlumno">`;
+    <select id="nivelAlumno" class="nuevo-nivel-select">`;
 
     if (nivelUsuario == NIVEL_INICIAL) {
         resultado += `
