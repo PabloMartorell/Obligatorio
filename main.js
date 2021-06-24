@@ -101,7 +101,7 @@ function logOut() {
 }
 
 function agregarEventoAImagenes() {
-    const imagenesNuevaTarea = document.querySelectorAll(".img");
+    const imagenesNuevaTarea = document.querySelectorAll(".imagen");
     for (let i = 0; i < imagenesNuevaTarea.length; i++) {
         imagenesNuevaTarea[i].addEventListener("click", seleccionarImagen);
     }

@@ -179,7 +179,7 @@ function mostrarPantallaEstudianteTareas() {
 }
 
 function seleccionarImagen() {
-    deseleccionarTodosLosElementosPorClase("img");
+    deseleccionarTodosLosElementosPorClase("imagen");
 
     const styleImgSeleccionada = `
     border: solid;
@@ -195,6 +195,7 @@ function deseleccionarTodosLosElementosPorClase(clase) {
     for (let i = 0; i < elementos.length; i++) {
         elementos[i].style = "";
     }
+    audioSeleccionadoNuevaEntrega = "";
 }
 
 function crearNuevaTarea() {
